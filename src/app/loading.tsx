@@ -1,7 +1,7 @@
-import Spinner from '@/components/Spinner';
+import { CircularProgress } from '@mui/material';
 
 const Loading = () => {
-    return <Spinner />;
+    return <CircularProgress />;
 };
 
 export default Loading;

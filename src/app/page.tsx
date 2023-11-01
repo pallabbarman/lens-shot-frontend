@@ -1,5 +1,11 @@
-import Spinner from '@/components/Spinner';
+import MainLayout from '@/layouts/Main';
 
-export default function Home() {
-    return <Spinner />;
-}
+const Home = () => {
+    return (
+        <div>
+            <MainLayout />
+        </div>
+    );
+};
+
+export default Home;
