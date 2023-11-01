@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import MainLayoutNavbar from './components/MainLayoutNavbar';
 
 interface MainLayoutProps {
-    children: ReactNode;
+    children?: ReactNode;
 }
 
 const MainLayout = ({ children }: MainLayoutProps) => {
