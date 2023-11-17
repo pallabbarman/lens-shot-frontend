@@ -31,10 +31,9 @@ const MainLayoutNavbar = () => {
                 <Container maxWidth="xl">
                     <Toolbar>
                         <Typography
-                            variant="h5"
+                            variant="h1"
                             component="div"
-                            fontStyle="italic"
-                            fontWeight={700}
+                            fontFamily="Agbalumo"
                             flexGrow={1}
                         >
                             LensShot

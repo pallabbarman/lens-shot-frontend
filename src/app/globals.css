@@ -1,8 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Cutive+Mono&display=swap');
 
-* {
+:root {
+    --white: #ffffff;
+    --richblack: #050f10;
+    --stormgrey: #777777;
+
+    --font-family-cutive-mono: 'Cutive Mono', monospace;
+}
+
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Cutive Mono', monospace;
 }
