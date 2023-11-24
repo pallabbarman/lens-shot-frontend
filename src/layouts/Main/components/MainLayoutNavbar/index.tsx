@@ -1,13 +1,16 @@
 'use client';
 
+import { cssColor } from '@/utils/color';
 import MenuIcon from '@mui/icons-material/Menu';
 import {
     AppBar,
+    Box,
     Container,
     IconButton,
     Toolbar,
     Typography,
 } from '@mui/material';
+import Link from 'next/link';
 import { useState } from 'react';
 import MainLayoutMenu from '../MainLayoutMenu';
 
@@ -30,14 +33,19 @@ const MainLayoutNavbar = () => {
             >
                 <Container maxWidth="xl">
                     <Toolbar>
-                        <Typography
-                            variant="h1"
-                            component="div"
-                            fontFamily="Agbalumo"
-                            flexGrow={1}
-                        >
-                            LensShot
-                        </Typography>
+                        <Box flexGrow={1}>
+                            <Link
+                                href="/"
+                                style={{
+                                    color: cssColor('richblack'),
+                                    textDecoration: 'none',
+                                }}
+                            >
+                                <Typography variant="h1" fontFamily="Agbalumo">
+                                    LensShot
+                                </Typography>
+                            </Link>
+                        </Box>
                         <IconButton
                             size="large"
                             color="inherit"

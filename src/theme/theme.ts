@@ -9,15 +9,6 @@ export const THEMES = {
     DARK: 'dark',
 };
 
-export const BREAKPOINTS = {
-    xs: 0,
-    sm: 576,
-    md: 768,
-    lg: 992,
-    xl: 1200,
-    xxl: 1400,
-};
-
 const theme = {
     typography: {
         fontFamily: 'var(--font-family-cutive-mono)',
@@ -173,6 +164,12 @@ interface CustomColors {
     richblack: SimplePaletteColorOptions;
     white: SimplePaletteColorOptions;
     stormgrey: SimplePaletteColorOptions;
+}
+
+export interface CustomColorNames {
+    richblack: true;
+    white: true;
+    stormgrey: true;
 }
 
 interface CustomVariants {
