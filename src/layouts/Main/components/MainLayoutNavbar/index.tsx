@@ -31,20 +31,21 @@ const MainLayoutNavbar = () => {
                 position="static"
                 sx={{ backgroundColor: 'white', color: 'black' }}
             >
-                <Container maxWidth="xl">
-                    <Toolbar>
+                <Container maxWidth="lg">
+                    <Toolbar sx={{ px: '0px !important' }}>
                         <Box flexGrow={1}>
-                            <Link
+                            <Typography
+                                variant="h1"
+                                fontFamily="Agbalumo"
+                                component={Link}
                                 href="/"
-                                style={{
-                                    color: cssColor('richblack'),
+                                color={cssColor('richblack')}
+                                sx={{
                                     textDecoration: 'none',
                                 }}
                             >
-                                <Typography variant="h1" fontFamily="Agbalumo">
-                                    LensShot
-                                </Typography>
-                            </Link>
+                                LensShot
+                            </Typography>
                         </Box>
                         <IconButton
                             size="large"

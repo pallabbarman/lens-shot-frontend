@@ -1,13 +1,11 @@
-import Services from '@/components/Services';
 import MainLayout from '@/layouts/Main';
+import HomePage from '@/pages/Home';
 
 const Home = () => {
     return (
-        <div>
-            <MainLayout>
-                <Services />
-            </MainLayout>
-        </div>
+        <MainLayout>
+            <HomePage />
+        </MainLayout>
     );
 };
 
