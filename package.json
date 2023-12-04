@@ -50,5 +50,8 @@
         "storybook": "7.6.3",
         "typescript": "^5",
         "vitest": "^0.34.6"
+    },
+    "resolutions": {
+        "jackspeak": "2.1.1"
     }
 }
