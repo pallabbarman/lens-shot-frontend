@@ -28,7 +28,7 @@ const MainLayoutNavbar = () => {
     return (
         <>
             <AppBar
-                position="static"
+                position="sticky"
                 sx={{ backgroundColor: 'white', color: 'black' }}
             >
                 <Container maxWidth="lg">

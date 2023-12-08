@@ -1,4 +1,4 @@
-import { Theme } from '@mui/material';
+import { CssBaseline, Theme } from '@mui/material';
 import {
     ThemeProvider as MuiThemeProvider,
     createTheme as createMuiTheme,
@@ -50,7 +50,12 @@ const ThemeProvider = ({
         getTheme(themeMode)
     );
 
-    return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
+    return (
+        <MuiThemeProvider theme={theme}>
+            <CssBaseline />
+            {children}
+        </MuiThemeProvider>
+    );
 };
 
 export default ThemeProvider;
