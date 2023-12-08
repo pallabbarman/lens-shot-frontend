@@ -1,5 +1,7 @@
-import Gallery from './components/Gallery';
-import Services from './components/Services';
+import dynamic from 'next/dynamic';
+
+const Services = dynamic(() => import('./components/Services'));
+const Gallery = dynamic(() => import('./components/Gallery'));
 
 const HomePage = () => {
     return (

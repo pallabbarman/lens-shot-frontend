@@ -13,6 +13,7 @@ const PhotoGallery = ({ img, alt, ...props }: PhotoGalleryProps) => {
             src={img}
             alt={alt}
             sx={{
+                cursor: 'pointer',
                 objectFit: 'cover',
             }}
             {...props}

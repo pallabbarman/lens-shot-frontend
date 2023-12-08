@@ -1,5 +1,7 @@
 import MainLayout from '@/layouts/Main';
-import HomePage from '@/pages/Home';
+import dynamic from 'next/dynamic';
+
+const HomePage = dynamic(() => import('@/pages/Home'));
 
 const Home = () => {
     return (
