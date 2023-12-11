@@ -117,7 +117,7 @@ const themesOptions = {
                 },
                 styleOverrides: {
                     root: {
-                        fontFamily: 'var(--font-family-montserrat)',
+                        fontFamily: 'var(--font-family-cutive-mono)',
                         fontSize: 14,
                         fontWeight: 700,
                         textTransform: 'uppercase',
@@ -136,6 +136,23 @@ const themesOptions = {
                     },
                     containedWhite: {
                         boxShadow: '0px 2px 2px 0px rgba(0, 0, 0, 0.16)',
+                    },
+                },
+            },
+            MuiTooltip: {
+                defaultProps: {
+                    arrow: true,
+                },
+                styleOverrides: {
+                    arrow: {
+                        color: theme.palette.richblack,
+                    },
+                    tooltip: {
+                        backgroundColor: theme.palette.richblack,
+                        fontSize: 16,
+                        color: 'white',
+                        fontFamily: 'var(--font-family-cutive-mono)',
+                        fontWeight: 600,
                     },
                 },
             },
