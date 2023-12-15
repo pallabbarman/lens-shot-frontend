@@ -11,6 +11,7 @@ import {
     ListItemIcon,
     ListItemText,
 } from '@mui/material';
+import Link from 'next/link';
 interface MainLayoutMenuProps {
     open: boolean;
     onClose: VoidFunction;
@@ -36,7 +37,7 @@ const MainLayoutMenu = ({ open, onClose }: MainLayoutMenuProps) => {
                 </IconButton>
             </Box>
             <List>
-                <ListItem disablePadding>
+                <ListItem disablePadding component={Link} href="/login">
                     <ListItemButton>
                         <ListItemIcon sx={{ minWidth: 30 }}>
                             <LoginIcon />

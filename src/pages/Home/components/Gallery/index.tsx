@@ -14,9 +14,7 @@ const Gallery = () => {
 
     return (
         <Box mt={3}>
-            <SectionTitle label="Portfolio" mb={5}>
-                Gallery
-            </SectionTitle>
+            <SectionTitle label="Portfolio">Gallery</SectionTitle>
             <Fancybox
                 options={{
                     Carousel: { infinite: false },

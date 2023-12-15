@@ -6,9 +6,7 @@ import { Box, Grid } from '@mui/material';
 const Blog = () => {
     return (
         <Box mt={3}>
-            <SectionTitle label="READ" mb={5}>
-                News & Blog
-            </SectionTitle>
+            <SectionTitle label="READ">News & Blog</SectionTitle>
             <Grid container spacing={3}>
                 <Grid item md={4} sm={6} xs={12}>
                     <BlogCard img={abc} title="Wedding nulla sapien">

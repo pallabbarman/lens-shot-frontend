@@ -110,7 +110,7 @@ const themesOptions = {
             },
             MuiButton: {
                 defaultProps: {
-                    variant: 'contained',
+                    variant: 'outlined',
                     disableElevation: false,
                     disableFocusRipple: true,
                     disableRipple: true,

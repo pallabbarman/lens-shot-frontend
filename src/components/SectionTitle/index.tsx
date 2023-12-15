@@ -8,7 +8,7 @@ interface SectionTitleProps extends BoxProps {
 
 const SectionTitle = ({ label, children, ...props }: SectionTitleProps) => {
     return (
-        <Box textAlign="center" {...props}>
+        <Box mb={5} textAlign="center" {...props}>
             <Typography
                 mb={1}
                 component="div"
