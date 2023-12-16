@@ -32,7 +32,7 @@ const Login = () => {
                 enableReinitialize
                 initialValues={{ email: '', password: '' }}
                 validationSchema={validationSchema}
-                onSubmit={(values, { setSubmitting }) => {
+                onSubmit={async (values, { setSubmitting }) => {
                     console.log(values);
                     setSubmitting(false);
                 }}
