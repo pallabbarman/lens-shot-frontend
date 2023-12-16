@@ -45,7 +45,7 @@ const MainLayoutMenu = ({ open, onClose }: MainLayoutMenuProps) => {
                         <ListItemText primary="Login" />
                     </ListItemButton>
                 </ListItem>
-                <ListItem disablePadding>
+                <ListItem disablePadding component={Link} href="/register">
                     <ListItemButton>
                         <ListItemIcon sx={{ minWidth: 30 }}>
                             <AppRegistrationIcon />

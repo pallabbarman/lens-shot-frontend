@@ -1,14 +1,4 @@
-import { cssColor } from '@/utils/color';
-import { ArrowRightAlt } from '@mui/icons-material';
-import {
-    Box,
-    Button,
-    Card,
-    CardActions,
-    CardProps,
-    Tooltip,
-    Typography,
-} from '@mui/material';
+import { Box, Card, CardProps, Tooltip, Typography } from '@mui/material';
 import Image, { StaticImageData } from 'next/image';
 import { ReactNode } from 'react';
 
@@ -47,7 +37,7 @@ const BlogCard = ({ img, alt, title, children, ...props }: BlogCardProps) => {
                     fontWeight={400}
                     color="textSecondary"
                     sx={{
-                        WebkitLineClamp: '4',
+                        WebkitLineClamp: '3',
                         WebkitBoxOrient: 'vertical',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
@@ -58,24 +48,6 @@ const BlogCard = ({ img, alt, title, children, ...props }: BlogCardProps) => {
                     {children}
                 </Typography>
             )}
-            <CardActions sx={{ p: 0 }}>
-                <Button
-                    endIcon={<ArrowRightAlt />}
-                    sx={{
-                        mt: 1,
-                        pl: 0,
-                        boxShadow: 0,
-                        color: cssColor('stormgrey'),
-                        backgroundColor: cssColor('white'),
-                        '&:hover, &:active, &:focus': {
-                            boxShadow: 0,
-                            backgroundColor: cssColor('white'),
-                        },
-                    }}
-                >
-                    Read more
-                </Button>
-            </CardActions>
         </Card>
     );
 };

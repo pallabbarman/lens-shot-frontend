@@ -8,6 +8,8 @@ import Link from 'next/link';
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
+    firstName: Yup.string().required('First name is required'),
+    lastName: Yup.string().required('Last name is required'),
     email: Yup.string()
         .email('Invalid email address')
         .required('Email is required'),
@@ -15,9 +17,18 @@ const validationSchema = Yup.object().shape({
         .required('Password is required')
         .min(6, 'Password is too short')
         .max(30, 'Password is too long'),
+    contactNo: Yup.string().required('Contact no is required'),
 });
 
-const Login = () => {
+const initialValues = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    contactNo: '',
+};
+
+const Registration = () => {
     return (
         <Box
             py={2}
@@ -27,10 +38,10 @@ const Login = () => {
             minHeight="calc(100vh - 64px)"
             flexDirection="column"
         >
-            <SectionTitle label="Have an account?">Login</SectionTitle>
+            <SectionTitle label="Don't have an account?">Signup</SectionTitle>
             <Formik
                 enableReinitialize
-                initialValues={{ email: '', password: '' }}
+                initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={(values, { setSubmitting }) => {
                     console.log(values);
@@ -48,6 +59,56 @@ const Login = () => {
                 }) => (
                     <form onSubmit={handleSubmit}>
                         <Grid container spacing={3} maxWidth={600}>
+                            <Grid item xs={12}>
+                                <Grid container spacing={3}>
+                                    <Grid item sm={6} xs={12}>
+                                        <TextField
+                                            fullWidth
+                                            name="firstName"
+                                            type="text"
+                                            label="First name"
+                                            variant="outlined"
+                                            placeholder="Enter your first name"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.firstName}
+                                            error={Boolean(
+                                                errors.firstName &&
+                                                    touched.firstName
+                                            )}
+                                            helperText={
+                                                touched.firstName && (
+                                                    <>{errors.firstName}</>
+                                                )
+                                            }
+                                            disabled={isSubmitting}
+                                        />
+                                    </Grid>
+                                    <Grid item sm={6} xs={12}>
+                                        <TextField
+                                            fullWidth
+                                            name="lastName"
+                                            type="text"
+                                            label="Last name"
+                                            variant="outlined"
+                                            placeholder="Enter your last name"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.lastName}
+                                            error={Boolean(
+                                                errors.lastName &&
+                                                    touched.lastName
+                                            )}
+                                            helperText={
+                                                touched.lastName && (
+                                                    <>{errors.lastName}</>
+                                                )
+                                            }
+                                            disabled={isSubmitting}
+                                        />
+                                    </Grid>
+                                </Grid>
+                            </Grid>
                             <Grid item xs={12}>
                                 <TextField
                                     fullWidth
@@ -91,6 +152,28 @@ const Login = () => {
                                 />
                             </Grid>
                             <Grid item xs={12}>
+                                <TextField
+                                    fullWidth
+                                    name="contactNo"
+                                    type="text"
+                                    label="Contact number"
+                                    variant="outlined"
+                                    placeholder="Enter your contact no"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.contactNo}
+                                    error={Boolean(
+                                        errors.contactNo && touched.contactNo
+                                    )}
+                                    helperText={
+                                        touched.contactNo && (
+                                            <>{errors.contactNo}</>
+                                        )
+                                    }
+                                    disabled={isSubmitting}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
                                 <Button
                                     fullWidth
                                     type="submit"
@@ -100,25 +183,19 @@ const Login = () => {
                                         color: cssColor('stormgrey'),
                                     }}
                                 >
-                                    Login
+                                    Signup
                                 </Button>
                             </Grid>
                             <Grid item xs={12}>
-                                <Box
-                                    display="flex"
-                                    justifyContent="space-between"
-                                >
-                                    <Typography variant="text4">
-                                        Forgot Password
-                                    </Typography>
+                                <Box display="flex" justifyContent="center">
                                     <Typography
                                         variant="text4"
                                         component={Link}
-                                        href="/register"
+                                        href="/login"
                                         color={cssColor('richblack')}
                                         sx={{ textDecoration: 'none' }}
                                     >
-                                        Don&apos;t have an account? Signup
+                                        Have an account? Login
                                     </Typography>
                                 </Box>
                             </Grid>
@@ -130,4 +207,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Registration;
