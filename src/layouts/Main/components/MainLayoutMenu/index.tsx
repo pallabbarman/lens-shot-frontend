@@ -1,4 +1,5 @@
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import Call from '@mui/icons-material/Call';
 import CancelIcon from '@mui/icons-material/Cancel';
 import LoginIcon from '@mui/icons-material/Login';
 import {
@@ -51,6 +52,14 @@ const MainLayoutMenu = ({ open, onClose }: MainLayoutMenuProps) => {
                             <AppRegistrationIcon />
                         </ListItemIcon>
                         <ListItemText primary="Registration" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding component={Link} href="/contact">
+                    <ListItemButton>
+                        <ListItemIcon sx={{ minWidth: 30 }}>
+                            <Call />
+                        </ListItemIcon>
+                        <ListItemText primary="Contact" />
                     </ListItemButton>
                 </ListItem>
             </List>

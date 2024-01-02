@@ -1,5 +1,6 @@
 import { Box, Card, CardProps, Tooltip, Typography } from '@mui/material';
 import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
 import { ReactNode } from 'react';
 
 interface BlogCardProps extends CardProps {
@@ -10,7 +11,12 @@ interface BlogCardProps extends CardProps {
 
 const BlogCard = ({ img, alt, title, children, ...props }: BlogCardProps) => {
     return (
-        <Card sx={{ borderRadius: 0, boxShadow: 'none' }} {...props}>
+        <Card
+            component={Link}
+            href="/"
+            sx={{ borderRadius: 0, boxShadow: 'none', textDecoration: 'none' }}
+            {...props}
+        >
             <Image
                 src={img}
                 alt={alt || 'blog'}

@@ -82,6 +82,7 @@ const theme = {
         richblack: '#050F10',
         white: '#FFFFFF',
         stormgrey: '#777777',
+        lightgrey: '#f6f6f6',
     },
 };
 
@@ -121,6 +122,7 @@ const themesOptions = {
                         fontSize: 14,
                         fontWeight: 700,
                         textTransform: 'uppercase',
+                        border: `1px solid #cbcbcb`,
                         boxShadow: 'none',
                         borderRadius: 32,
                         padding: '8px 24px',
@@ -165,6 +167,7 @@ const themesOptions = {
             richblack: theme.palette.richblack,
             white: theme.palette.white,
             stormgrey: theme.palette.stormgrey,
+            lightgrey: theme.palette.lightgrey,
         },
         shadows: [
             'none',
@@ -181,12 +184,14 @@ interface CustomColors {
     richblack: SimplePaletteColorOptions;
     white: SimplePaletteColorOptions;
     stormgrey: SimplePaletteColorOptions;
+    lightgrey: SimplePaletteColorOptions;
 }
 
 export interface CustomColorNames {
     richblack: true;
     white: true;
     stormgrey: true;
+    lightgrey: true;
 }
 
 interface CustomVariants {
@@ -215,10 +220,6 @@ declare module '@mui/material/styles/createPalette' {
 
 declare module '@mui/material/Typography' {
     interface TypographyPropsVariantOverrides extends CustomVariants {}
-}
-
-declare module '@mui/material/Button' {
-    interface ButtonPropsVariantOverrides extends CustomVariants {}
 }
 
 export type ThemeMode = keyof typeof THEMES;

@@ -62,9 +62,7 @@ const Login = () => {
                                     error={Boolean(
                                         errors.email && touched.email
                                     )}
-                                    helperText={
-                                        touched.email && <>{errors.email}</>
-                                    }
+                                    helperText={touched.email && errors.email}
                                     disabled={isSubmitting}
                                 />
                             </Grid>
@@ -83,9 +81,7 @@ const Login = () => {
                                         errors.password && touched.password
                                     )}
                                     helperText={
-                                        touched.password && (
-                                            <>{errors.password}</>
-                                        )
+                                        touched.password && errors.password
                                     }
                                     disabled={isSubmitting}
                                 />

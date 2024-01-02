@@ -1,7 +1,7 @@
-import { CircularProgress } from '@mui/material';
+import Progress from '@/components/Progress';
 
 const Loading = () => {
-    return <CircularProgress />;
+    return <Progress />;
 };
 
 export default Loading;

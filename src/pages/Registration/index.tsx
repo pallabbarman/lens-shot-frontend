@@ -77,9 +77,8 @@ const Registration = () => {
                                                     touched.firstName
                                             )}
                                             helperText={
-                                                touched.firstName && (
-                                                    <>{errors.firstName}</>
-                                                )
+                                                touched.firstName &&
+                                                errors.firstName
                                             }
                                             disabled={isSubmitting}
                                         />
@@ -100,9 +99,8 @@ const Registration = () => {
                                                     touched.lastName
                                             )}
                                             helperText={
-                                                touched.lastName && (
-                                                    <>{errors.lastName}</>
-                                                )
+                                                touched.lastName &&
+                                                errors.lastName
                                             }
                                             disabled={isSubmitting}
                                         />
@@ -123,9 +121,7 @@ const Registration = () => {
                                     error={Boolean(
                                         errors.email && touched.email
                                     )}
-                                    helperText={
-                                        touched.email && <>{errors.email}</>
-                                    }
+                                    helperText={touched.email && errors.email}
                                     disabled={isSubmitting}
                                 />
                             </Grid>
@@ -144,9 +140,7 @@ const Registration = () => {
                                         errors.password && touched.password
                                     )}
                                     helperText={
-                                        touched.password && (
-                                            <>{errors.password}</>
-                                        )
+                                        touched.password && errors.password
                                     }
                                     disabled={isSubmitting}
                                 />
@@ -166,9 +160,7 @@ const Registration = () => {
                                         errors.contactNo && touched.contactNo
                                     )}
                                     helperText={
-                                        touched.contactNo && (
-                                            <>{errors.contactNo}</>
-                                        )
+                                        touched.contactNo && errors.contactNo
                                     }
                                     disabled={isSubmitting}
                                 />

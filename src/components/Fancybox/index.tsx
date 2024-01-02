@@ -2,7 +2,7 @@ import { Fancybox as NativeFancybox } from '@fancyapps/ui';
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
 import { OptionsType } from '@fancyapps/ui/types/Fancybox/options';
 import { Box } from '@mui/material';
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, memo, useEffect, useRef } from 'react';
 
 interface FancyboxProps {
     options?: Partial<OptionsType>;
@@ -34,4 +34,4 @@ const Fancybox = ({ options, delegate, children }: FancyboxProps) => {
     );
 };
 
-export default Fancybox;
+export default memo(Fancybox);
