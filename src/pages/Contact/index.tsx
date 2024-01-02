@@ -1,7 +1,6 @@
 'use client';
 
 import SectionTitle from '@/components/SectionTitle';
-import { cssColor } from '@/utils/color';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -137,9 +136,6 @@ const Contact = () => {
                                     type="submit"
                                     size="large"
                                     disabled={isSubmitting}
-                                    sx={{
-                                        color: cssColor('stormgrey'),
-                                    }}
                                 >
                                     Send Message
                                 </Button>

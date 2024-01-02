@@ -1,5 +1,4 @@
 import notFound from '@/assets/not-found.svg';
-import { cssColor } from '@/utils/color';
 import { Button, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Image from 'next/image';
@@ -29,7 +28,7 @@ const NotFoundPage = () => {
                 <Button
                     LinkComponent={Link}
                     href="/"
-                    sx={{ color: cssColor('stormgrey') }}
+                    // sx={{ color: cssColor('stormgrey') }}
                 >
                     Back home
                 </Button>

@@ -92,9 +92,6 @@ const Login = () => {
                                     type="submit"
                                     size="large"
                                     disabled={isSubmitting}
-                                    sx={{
-                                        color: cssColor('stormgrey'),
-                                    }}
                                 >
                                     Login
                                 </Button>

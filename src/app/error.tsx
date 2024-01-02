@@ -1,7 +1,6 @@
 'use client';
 
 import error from '@/assets/server-error.svg';
-import { cssColor } from '@/utils/color';
 import { Box, Button, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -30,7 +29,7 @@ const ErrorPage = () => {
                 <Button
                     LinkComponent={Link}
                     href="/"
-                    sx={{ color: cssColor('stormgrey') }}
+                    // sx={{ color: cssColor('stormgrey') }}
                 >
                     Back home
                 </Button>

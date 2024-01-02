@@ -171,9 +171,6 @@ const Registration = () => {
                                     type="submit"
                                     size="large"
                                     disabled={isSubmitting}
-                                    sx={{
-                                        color: cssColor('stormgrey'),
-                                    }}
                                 >
                                     Signup
                                 </Button>

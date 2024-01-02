@@ -1,5 +1,6 @@
 import { Container } from '@mui/material';
 import { ReactNode } from 'react';
+import MainLayoutFooter from './components/MainLayoutFooter';
 import MainLayoutNavbar from './components/MainLayoutNavbar';
 
 interface MainLayoutProps {
@@ -11,6 +12,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         <>
             <MainLayoutNavbar />
             <Container maxWidth="lg">{children}</Container>
+            <MainLayoutFooter />
         </>
     );
 };

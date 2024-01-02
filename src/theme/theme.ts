@@ -125,6 +125,7 @@ const themesOptions = {
                         border: `1px solid #cbcbcb`,
                         boxShadow: 'none',
                         borderRadius: 32,
+                        color: theme.palette.richblack,
                         padding: '8px 24px',
                         '&:hover, &:focus': {
                             boxShadow: '0px 2px 2px 0px #00000029 inset',

@@ -5,13 +5,8 @@ import Fancybox from '@/components/Fancybox';
 import PhotoGallery from '@/components/PhotoGallery';
 import SectionTitle from '@/components/SectionTitle';
 import { Box, Grid } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Gallery = () => {
-    const theme = useTheme();
-    const smUp = useMediaQuery(theme.breakpoints.up('sm'));
-
     return (
         <Box mt={3}>
             <SectionTitle label="Portfolio">Gallery</SectionTitle>
@@ -28,7 +23,7 @@ const Gallery = () => {
                                     img={abc}
                                     alt="hi"
                                     width="100%"
-                                    height={smUp ? 495 : 230}
+                                    height={{ sm: 495, xs: 230 }}
                                     data-fancybox="gallery"
                                 />
                             </Grid>
@@ -90,7 +85,7 @@ const Gallery = () => {
                                     img={abc}
                                     alt="hi"
                                     width="100%"
-                                    height={smUp ? 495 : 230}
+                                    height={{ sm: 495, xs: 230 }}
                                     data-fancybox="gallery"
                                 />
                             </Grid>
