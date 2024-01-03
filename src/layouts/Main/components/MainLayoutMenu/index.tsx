@@ -1,5 +1,7 @@
+import CallIcon from '@/icons/CallIcon';
+import NoteIcon from '@/icons/NoteIcon';
+import { Collections } from '@mui/icons-material';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
-import CallIcon from '@mui/icons-material/Call';
 import CancelIcon from '@mui/icons-material/Cancel';
 import LoginIcon from '@mui/icons-material/Login';
 import {
@@ -52,6 +54,22 @@ const MainLayoutMenu = ({ open, onClose }: MainLayoutMenuProps) => {
                             <AppRegistrationIcon />
                         </ListItemIcon>
                         <ListItemText primary="Registration" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding component={Link} href="/gallery">
+                    <ListItemButton>
+                        <ListItemIcon sx={{ minWidth: 30 }}>
+                            <Collections />
+                        </ListItemIcon>
+                        <ListItemText primary="Portfolio" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding component={Link} href="/blog">
+                    <ListItemButton>
+                        <ListItemIcon sx={{ minWidth: 30 }}>
+                            <NoteIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Blog" />
                     </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding component={Link} href="/contact">

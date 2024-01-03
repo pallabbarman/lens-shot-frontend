@@ -4,7 +4,9 @@ import abc from '@/assets/1.jpg';
 import Fancybox from '@/components/Fancybox';
 import PhotoGallery from '@/components/PhotoGallery';
 import SectionTitle from '@/components/SectionTitle';
-import { Box, Grid } from '@mui/material';
+import { ArrowRightAlt } from '@mui/icons-material';
+import { Box, Grid, Typography } from '@mui/material';
+import Link from 'next/link';
 
 const Gallery = () => {
     return (
@@ -93,6 +95,22 @@ const Gallery = () => {
                     </Grid>
                 </Grid>
             </Fancybox>
+            <Box mt={2}>
+                <Typography
+                    variant="text5"
+                    color="textSecondary"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="end"
+                    component={Link}
+                    href="/gallery"
+                    sx={{
+                        textDecoration: 'none',
+                    }}
+                >
+                    All Gallery <ArrowRightAlt />
+                </Typography>
+            </Box>
         </Box>
     );
 };

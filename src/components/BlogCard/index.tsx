@@ -33,7 +33,7 @@ const BlogCard = ({ img, alt, title, children, ...props }: BlogCardProps) => {
                 </Typography>
             </Box>
             <Tooltip placement="top" title={title}>
-                <Typography variant="h2" mb={0.5} noWrap>
+                <Typography variant="h2" mb={0.5} noWrap fontWeight={400}>
                     {title}
                 </Typography>
             </Tooltip>

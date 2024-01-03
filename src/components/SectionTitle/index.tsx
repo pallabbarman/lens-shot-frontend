@@ -20,7 +20,7 @@ const SectionTitle = ({ label, children, ...props }: SectionTitleProps) => {
             >
                 {label}
             </Typography>
-            <Typography variant="h1" color="textPrimary">
+            <Typography variant="h1" color="textPrimary" fontWeight={400}>
                 {children}
             </Typography>
         </Box>
