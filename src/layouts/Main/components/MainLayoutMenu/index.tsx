@@ -1,9 +1,9 @@
 import CallIcon from '@/icons/CallIcon';
+import CancelIcon from '@/icons/CancelIcon';
+import CollectionsIcon from '@/icons/CollectionsIcon';
+import LoginIcon from '@/icons/LoginIcon';
 import NoteIcon from '@/icons/NoteIcon';
-import { Collections } from '@mui/icons-material';
-import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
-import CancelIcon from '@mui/icons-material/Cancel';
-import LoginIcon from '@mui/icons-material/Login';
+import RegistrationIcon from '@/icons/RegistrationIcon';
 import {
     Box,
     Drawer,
@@ -51,7 +51,7 @@ const MainLayoutMenu = ({ open, onClose }: MainLayoutMenuProps) => {
                 <ListItem disablePadding component={Link} href="/register">
                     <ListItemButton>
                         <ListItemIcon sx={{ minWidth: 30 }}>
-                            <AppRegistrationIcon />
+                            <RegistrationIcon />
                         </ListItemIcon>
                         <ListItemText primary="Registration" />
                     </ListItemButton>
@@ -59,7 +59,7 @@ const MainLayoutMenu = ({ open, onClose }: MainLayoutMenuProps) => {
                 <ListItem disablePadding component={Link} href="/gallery">
                     <ListItemButton>
                         <ListItemIcon sx={{ minWidth: 30 }}>
-                            <Collections />
+                            <CollectionsIcon />
                         </ListItemIcon>
                         <ListItemText primary="Portfolio" />
                     </ListItemButton>

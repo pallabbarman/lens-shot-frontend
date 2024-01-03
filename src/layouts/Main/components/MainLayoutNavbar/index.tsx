@@ -1,7 +1,7 @@
 'use client';
 
+import MenuIcon from '@/icons/MenuIcon';
 import { cssColor } from '@/utils/color';
-import MenuIcon from '@mui/icons-material/Menu';
 import {
     AppBar,
     Box,
