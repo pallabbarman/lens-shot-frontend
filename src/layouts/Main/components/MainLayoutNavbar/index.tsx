@@ -52,6 +52,7 @@ const MainLayoutNavbar = () => {
                             color="inherit"
                             aria-label="menu"
                             onClick={handleOpenMenu}
+                            sx={{ p: 0 }}
                         >
                             <MenuIcon />
                         </IconButton>

@@ -8,7 +8,6 @@ interface BlogProps {
 const Blog = ({ params }: BlogProps) => {
     return (
         <MainLayout>
-            <h1>{params.slug}</h1>
             <BlogItem />
         </MainLayout>
     );
