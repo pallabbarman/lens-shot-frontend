@@ -5,7 +5,7 @@ import { Box, Grid } from '@mui/material';
 
 const Blog = () => {
     return (
-        <Box mt={3}>
+        <Box mt={{ xs: 3, sm: 5 }}>
             <SectionTitle label="READ">News & Blog</SectionTitle>
             <Grid container spacing={3}>
                 <Grid item md={4} sm={6} xs={12}>

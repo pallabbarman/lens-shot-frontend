@@ -1,3 +1,4 @@
+import { cssColor } from '@/utils/color';
 import {
     ListItem,
     ListItemButton,
@@ -21,7 +22,13 @@ const MainLayoutMenuItem = ({
     ...props
 }: MainLayoutMenuItemProps) => {
     return (
-        <ListItem disablePadding component={Link} href={href} {...props}>
+        <ListItem
+            disablePadding
+            component={Link}
+            href={href}
+            sx={{ color: cssColor('stormgrey') }}
+            {...props}
+        >
             <ListItemButton>
                 <ListItemIcon sx={{ minWidth: 30 }}>{icon}</ListItemIcon>
                 <ListItemText primary={children} />

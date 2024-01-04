@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 
 const About = () => {
     return (
-        <Box mt={3}>
+        <Box mt={{ xs: 3, sm: 5 }}>
             <SectionTitle label="Welcome">About Us</SectionTitle>
             <BlogItem img={abc} title="Wedding nulla sapien" label="Fashion">
                 Luroin non lorem ac erat suscipit bibendum. Nulla facilisi.

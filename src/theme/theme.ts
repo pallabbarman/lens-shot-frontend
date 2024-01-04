@@ -121,7 +121,6 @@ const themesOptions = {
                         fontFamily: 'var(--font-family-cutive-mono)',
                         fontSize: 14,
                         fontWeight: 700,
-                        textTransform: 'uppercase',
                         border: `1px solid #cbcbcb`,
                         boxShadow: 'none',
                         borderRadius: 32,

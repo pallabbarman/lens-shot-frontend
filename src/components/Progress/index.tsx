@@ -1,6 +1,8 @@
-import { Box, CircularProgress } from '@mui/material';
+import { Box, CircularProgress, CircularProgressProps } from '@mui/material';
 
-const Progress = () => {
+type ProgressProps = CircularProgressProps;
+
+const Progress = ({ ...props }: ProgressProps) => {
     return (
         <Box
             height="100vh"
@@ -8,7 +10,7 @@ const Progress = () => {
             alignItems="center"
             justifyContent="center"
         >
-            <CircularProgress />
+            <CircularProgress {...props} />
         </Box>
     );
 };

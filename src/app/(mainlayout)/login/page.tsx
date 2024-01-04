@@ -1,4 +1,3 @@
-import MainLayout from '@/layouts/Main';
 import Login from '@/pages/Login';
 import { Metadata } from 'next';
 
@@ -8,11 +7,7 @@ export const metadata: Metadata = {
 };
 
 const LoginPage = () => {
-    return (
-        <MainLayout>
-            <Login />
-        </MainLayout>
-    );
+    return <Login />;
 };
 
 export default LoginPage;

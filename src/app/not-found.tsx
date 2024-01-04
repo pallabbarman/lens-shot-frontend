@@ -25,11 +25,7 @@ const NotFoundPage = () => {
                 <Typography variant="text3" color="textSecondary">
                     Sorry, the page you visited does not exist.
                 </Typography>
-                <Button
-                    LinkComponent={Link}
-                    href="/"
-                    // sx={{ color: cssColor('stormgrey') }}
-                >
+                <Button LinkComponent={Link} href="/">
                     Back home
                 </Button>
             </Box>

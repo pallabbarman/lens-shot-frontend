@@ -1,6 +1,8 @@
 import CallIcon from '@/icons/CallIcon';
+import CameraIcon from '@/icons/CameraIcon';
 import CancelIcon from '@/icons/CancelIcon';
 import CollectionsIcon from '@/icons/CollectionsIcon';
+import HomeIcon from '@/icons/HomeIcon';
 import InfoIcon from '@/icons/InfoIcon';
 import LoginIcon from '@/icons/LoginIcon';
 import NoteIcon from '@/icons/NoteIcon';
@@ -40,6 +42,12 @@ const MainLayoutMenu = ({ open, onClose }: MainLayoutMenuProps) => {
                     icon={<RegistrationIcon />}
                 >
                     Registration
+                </MainLayoutMenuItem>
+                <MainLayoutMenuItem href="/" icon={<HomeIcon />}>
+                    Home
+                </MainLayoutMenuItem>
+                <MainLayoutMenuItem href="/service" icon={<CameraIcon />}>
+                    Service
                 </MainLayoutMenuItem>
                 <MainLayoutMenuItem href="/gallery" icon={<CollectionsIcon />}>
                     Portfolio

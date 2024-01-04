@@ -1,16 +1,15 @@
 'use client';
 
 import abc from '@/assets/1.jpg';
+import CategoryItems from '@/components/CategoryItems';
 import Fancybox from '@/components/Fancybox';
 import PhotoGallery from '@/components/PhotoGallery';
 import SectionTitle from '@/components/SectionTitle';
-import { ArrowRightAlt } from '@mui/icons-material';
-import { Box, Grid, Typography } from '@mui/material';
-import Link from 'next/link';
+import { Box, Grid } from '@mui/material';
 
 const Gallery = () => {
     return (
-        <Box mt={3}>
+        <Box mt={{ xs: 3, sm: 5 }}>
             <SectionTitle label="Portfolio">Gallery</SectionTitle>
             <Fancybox
                 options={{
@@ -95,22 +94,7 @@ const Gallery = () => {
                     </Grid>
                 </Grid>
             </Fancybox>
-            <Box mt={2}>
-                <Typography
-                    variant="text5"
-                    color="textSecondary"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="end"
-                    component={Link}
-                    href="/gallery"
-                    sx={{
-                        textDecoration: 'none',
-                    }}
-                >
-                    All Gallery <ArrowRightAlt />
-                </Typography>
-            </Box>
+            <CategoryItems href="/gallery">All Gallery</CategoryItems>
         </Box>
     );
 };

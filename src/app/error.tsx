@@ -26,11 +26,7 @@ const ErrorPage = () => {
                 <Typography variant="text3" color="textSecondary">
                     Sorry, something went wrong. Please try again!
                 </Typography>
-                <Button
-                    LinkComponent={Link}
-                    href="/"
-                    // sx={{ color: cssColor('stormgrey') }}
-                >
+                <Button LinkComponent={Link} href="/">
                     Back home
                 </Button>
             </Box>

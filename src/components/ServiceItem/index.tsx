@@ -1,14 +1,24 @@
 'use client';
 
-import abc from '@/assets/1.jpg';
 import ArrowRightIcon from '@/icons/ArrowRightIcon';
 import { cssColor } from '@/utils/color';
-import { Box, Link as MuiLink, Slide, Typography } from '@mui/material';
-import Image from 'next/image';
+import {
+    Box,
+    BoxProps,
+    Link as MuiLink,
+    Slide,
+    Typography,
+} from '@mui/material';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-const ServiceItem = () => {
+interface ServiceItemProps extends BoxProps {
+    img: string | StaticImageData;
+    children: string;
+}
+
+const ServiceItem = ({ img, children, ...props }: ServiceItemProps) => {
     const [hovered, setHovered] = useState(false);
 
     return (
@@ -16,18 +26,21 @@ const ServiceItem = () => {
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             sx={{
-                width: 250,
-                height: 380,
+                width: '100%',
+                minWidth: 250,
+                height: '100%',
+                minHeight: 380,
                 position: 'relative',
                 overflow: 'hidden',
                 '&:hover img': {
                     transform: 'scale(1.1)',
                 },
             }}
+            {...props}
         >
             <Image
-                src={abc}
-                alt=""
+                src={img}
+                alt={children}
                 fill
                 style={{
                     transition: 'transform 0.5s ease',
@@ -58,7 +71,7 @@ const ServiceItem = () => {
                         fontWeight={400}
                         component="div"
                     >
-                        Weeding Photography
+                        {children}
                     </Typography>
                     <Box
                         sx={{

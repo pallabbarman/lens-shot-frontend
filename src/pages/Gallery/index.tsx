@@ -4,7 +4,7 @@ import VideoGallery from './components/VideoGallery';
 
 const Gallery = () => {
     return (
-        <Box mt={3}>
+        <Box mt={{ xs: 3, sm: 5 }}>
             <ImageGallery />
             <VideoGallery />
         </Box>

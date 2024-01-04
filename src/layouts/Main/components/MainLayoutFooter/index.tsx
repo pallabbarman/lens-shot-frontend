@@ -1,5 +1,6 @@
+import HomeIcon from '@/icons/HomeIcon';
+import MailIcon from '@/icons/MailIcon';
 import { cssColor } from '@/utils/color';
-import { Home, MailOutline } from '@mui/icons-material';
 import Call from '@mui/icons-material/Call';
 import {
     Box,
@@ -43,7 +44,7 @@ const MainLayoutFooter = () => {
                         <List>
                             <ListItem disablePadding>
                                 <ListItemIcon sx={{ minWidth: 30 }}>
-                                    <Home />
+                                    <HomeIcon />
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="24th Road, Gotham City, Olympus."
@@ -69,7 +70,7 @@ const MainLayoutFooter = () => {
                                 href="mailto:info@lensshot.com"
                             >
                                 <ListItemIcon sx={{ minWidth: 30 }}>
-                                    <MailOutline />
+                                    <MailIcon />
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="info@lensshot.com"
