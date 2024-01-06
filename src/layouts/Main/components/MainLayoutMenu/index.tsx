@@ -6,7 +6,6 @@ import HomeIcon from '@/icons/HomeIcon';
 import InfoIcon from '@/icons/InfoIcon';
 import LoginIcon from '@/icons/LoginIcon';
 import NoteIcon from '@/icons/NoteIcon';
-import PaidIcon from '@/icons/PaidIcon';
 import RegistrationIcon from '@/icons/RegistrationIcon';
 import { Box, Drawer, IconButton, List } from '@mui/material';
 import MainLayoutMenuItem from '../MainLayoutMenuItem';
@@ -55,9 +54,6 @@ const MainLayoutMenu = ({ open, onClose }: MainLayoutMenuProps) => {
                 </MainLayoutMenuItem>
                 <MainLayoutMenuItem href="/blog" icon={<NoteIcon />}>
                     Blog
-                </MainLayoutMenuItem>
-                <MainLayoutMenuItem href="/price" icon={<PaidIcon />}>
-                    Pricing
                 </MainLayoutMenuItem>
                 <MainLayoutMenuItem href="/about" icon={<InfoIcon />}>
                     About

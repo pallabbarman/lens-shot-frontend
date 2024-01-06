@@ -158,6 +158,22 @@ const themesOptions = {
                     },
                 },
             },
+            MuiAccordion: {
+                styleOverrides: {
+                    root: {
+                        marginBottom: '16px',
+                        boxShadow: 'none',
+                        border: 'none',
+                        backgroundColor: theme.palette.lightgrey,
+                        '&::before': {
+                            height: 0,
+                        },
+                        '&:last-child': {
+                            borderRadius: 0,
+                        },
+                    },
+                },
+            },
         },
         palette: {
             text: {
