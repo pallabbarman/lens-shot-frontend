@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 
+const Banner = dynamic(() => import('./components/Banner'));
 const Services = dynamic(() => import('./components/Services'));
 const Gallery = dynamic(() => import('./components/Gallery'));
 const Price = dynamic(() => import('./components/Price'));
@@ -9,6 +10,7 @@ const Faq = dynamic(() => import('./components/Faq'));
 const HomePage = () => {
     return (
         <>
+            <Banner />
             <Services />
             <Gallery />
             <Price />

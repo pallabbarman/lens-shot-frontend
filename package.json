@@ -2,6 +2,11 @@
     "name": "lens-shot",
     "version": "0.1.0",
     "private": true,
+    "author": "Pallab Bharman",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pallabbarman/lens-shot-frontend.git"
+    },
     "scripts": {
         "dev": "next dev",
         "build": "next build",
@@ -53,8 +58,5 @@
         "storybook": "7.6.3",
         "typescript": "^5",
         "vitest": "^0.34.6"
-    },
-    "resolutions": {
-        "jackspeak": "2.1.1"
     }
 }

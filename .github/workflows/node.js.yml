@@ -24,9 +24,9 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
-                  cache: 'yarn'
-            - run: yarn install
-            - run: yarn build
-            - run: yarn lint
-            - run: yarn test
-            - run: yarn build-storybook
+                  cache: 'pnpm'
+            - run: pnpm install
+            - run: pnpm build
+            - run: pnpm lint
+            - run: pnpm test
+            - run: pnpm build-storybook
