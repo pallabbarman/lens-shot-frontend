@@ -1,4 +1,5 @@
 import Providers from '@/lib/Providers';
+import ToastProvider from '@/lib/ToastProvider';
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import './globals.css';
@@ -12,7 +13,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     return (
         <Providers>
             <html lang="en">
-                <body>{children}</body>
+                <body>
+                    {children}
+                    <ToastProvider />
+                </body>
             </html>
         </Providers>
     );

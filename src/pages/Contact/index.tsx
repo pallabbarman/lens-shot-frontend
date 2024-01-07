@@ -1,8 +1,12 @@
 'use client';
 
 import SectionTitle from '@/components/SectionTitle';
+import { useContactMutation } from '@/redux/features/contactApi';
+import { IGenericErrorResponse } from '@/types/error';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { Formik } from 'formik';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
@@ -15,6 +19,21 @@ const validationSchema = Yup.object().shape({
 });
 
 const Contact = () => {
+    const [contact, { isLoading, isError, isSuccess, data, error }] =
+        useContactMutation();
+
+    useEffect(() => {
+        if (isSuccess && data?.message) {
+            toast.success(data.message);
+        }
+        if (isError && error && 'status' in error) {
+            const errorMessage = error.data as IGenericErrorResponse;
+            if (errorMessage) {
+                toast.error(errorMessage?.message);
+            }
+        }
+    }, [data, error, isError, isSuccess]);
+
     return (
         <Box
             py={2}
@@ -36,9 +55,10 @@ const Contact = () => {
                     message: '',
                 }}
                 validationSchema={validationSchema}
-                onSubmit={async (values, { setSubmitting }) => {
-                    console.log(values);
+                onSubmit={async (values, { setSubmitting, resetForm }) => {
+                    await contact(values);
                     setSubmitting(false);
+                    resetForm();
                 }}
             >
                 {({
@@ -135,7 +155,7 @@ const Contact = () => {
                                     fullWidth
                                     type="submit"
                                     size="large"
-                                    disabled={isSubmitting}
+                                    disabled={isSubmitting || isLoading}
                                 >
                                     Send Message
                                 </Button>
