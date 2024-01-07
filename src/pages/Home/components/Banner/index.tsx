@@ -20,6 +20,7 @@ const Banner = () => {
             <Typography
                 variant="text3"
                 textAlign="right"
+                color="textSecondary"
                 width={{ xs: '26ch', md: '100%' }}
             >
                 Capture your favorite moments with us.
