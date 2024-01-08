@@ -1,4 +1,4 @@
-import Services from '@/pages/Services';
+import Services from '@/_pages/Services';
 
 const ServicesPage = () => {
     return <Services />;

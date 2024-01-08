@@ -1,4 +1,4 @@
-import Gallery from '@/pages/Gallery';
+import Gallery from '@/_pages/Gallery';
 
 const GalleryPage = () => {
     return <Gallery />;

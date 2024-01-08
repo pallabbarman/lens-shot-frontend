@@ -1,4 +1,4 @@
-import Registration from '@/pages/Registration';
+import Registration from '@/_pages/Registration';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
