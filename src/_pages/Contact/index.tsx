@@ -26,10 +26,13 @@ const Contact = () => {
         if (isSuccess && data?.message) {
             toast.success(data.message);
         }
-        if (isError && error && 'status' in error) {
-            const errorMessage = error.data as IGenericErrorResponse;
-            if (errorMessage) {
-                toast.error(errorMessage?.message);
+        if (isError && error) {
+            toast.error('Something went wrong! Please try again!');
+            if ('status' in error) {
+                const errorMessage = error.data as IGenericErrorResponse;
+                if (errorMessage) {
+                    toast.error(errorMessage?.message);
+                }
             }
         }
     }, [data, error, isError, isSuccess]);
