@@ -14,12 +14,14 @@ interface MainLayoutMenuItemProps extends ListItemProps {
     href: string;
     icon: ReactNode;
     children: ReactNode;
+    onClose: VoidFunction;
 }
 
 const MainLayoutMenuItem = ({
     href,
     icon,
     children,
+    onClose,
     ...props
 }: MainLayoutMenuItemProps) => {
     const pathname = usePathname();
@@ -30,6 +32,7 @@ const MainLayoutMenuItem = ({
             disablePadding
             component={Link}
             href={href}
+            onClick={onClose}
             sx={{
                 color: cssColor(isActive ? 'richblack' : 'stormgrey'),
                 bgcolor: cssColor(isActive ? 'lightgrey' : 'white'),

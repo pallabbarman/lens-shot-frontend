@@ -1,14 +1,7 @@
-import CallIcon from '@/icons/CallIcon';
-import CameraIcon from '@/icons/CameraIcon';
 import CancelIcon from '@/icons/CancelIcon';
-import CollectionsIcon from '@/icons/CollectionsIcon';
-import HomeIcon from '@/icons/HomeIcon';
-import InfoIcon from '@/icons/InfoIcon';
-import LoginIcon from '@/icons/LoginIcon';
-import NoteIcon from '@/icons/NoteIcon';
-import RegistrationIcon from '@/icons/RegistrationIcon';
 import { Box, Drawer, IconButton, List } from '@mui/material';
 import MainLayoutMenuItem from '../MainLayoutMenuItem';
+import { mainLayoutMenuItemList } from '../MainLayoutMenuItemList';
 interface MainLayoutMenuProps {
     open: boolean;
     onClose: VoidFunction;
@@ -34,33 +27,16 @@ const MainLayoutMenu = ({ open, onClose }: MainLayoutMenuProps) => {
                 </IconButton>
             </Box>
             <List>
-                <MainLayoutMenuItem href="/login" icon={<LoginIcon />}>
-                    Login
-                </MainLayoutMenuItem>
-                <MainLayoutMenuItem
-                    href="/register"
-                    icon={<RegistrationIcon />}
-                >
-                    Registration
-                </MainLayoutMenuItem>
-                <MainLayoutMenuItem href="/" icon={<HomeIcon />}>
-                    Home
-                </MainLayoutMenuItem>
-                <MainLayoutMenuItem href="/services" icon={<CameraIcon />}>
-                    Service
-                </MainLayoutMenuItem>
-                <MainLayoutMenuItem href="/gallery" icon={<CollectionsIcon />}>
-                    Portfolio
-                </MainLayoutMenuItem>
-                <MainLayoutMenuItem href="/blog" icon={<NoteIcon />}>
-                    Blog
-                </MainLayoutMenuItem>
-                <MainLayoutMenuItem href="/about" icon={<InfoIcon />}>
-                    About
-                </MainLayoutMenuItem>
-                <MainLayoutMenuItem href="/contact" icon={<CallIcon />}>
-                    Contact
-                </MainLayoutMenuItem>
+                {mainLayoutMenuItemList.map((item) => (
+                    <MainLayoutMenuItem
+                        key={item.href}
+                        href={item.href}
+                        icon={item.icon}
+                        onClose={onClose}
+                    >
+                        {item.title}
+                    </MainLayoutMenuItem>
+                ))}
             </List>
         </Drawer>
     );
