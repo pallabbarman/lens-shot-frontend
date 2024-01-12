@@ -1,10 +1,15 @@
 'use client';
 
 import SectionTitle from '@/components/SectionTitle';
+import { useUserLoginMutation } from '@/redux/features/authApi';
+import { IGenericErrorResponse } from '@/types/error';
 import { cssColor } from '@/utils/color';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { Formik } from 'formik';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
@@ -18,6 +23,27 @@ const validationSchema = Yup.object().shape({
 });
 
 const Login = () => {
+    const router = useRouter();
+
+    const [userLogin, { data, isLoading, isSuccess, isError, error }] =
+        useUserLoginMutation();
+
+    useEffect(() => {
+        if (isSuccess && data?.message) {
+            toast.success(data.message);
+            router.back();
+        }
+        if (isError && error) {
+            toast.error('Something went wrong! Please try again!');
+            if ('status' in error) {
+                const errorMessage = error.data as IGenericErrorResponse;
+                if (errorMessage) {
+                    toast.error(errorMessage?.message);
+                }
+            }
+        }
+    }, [data, error, isError, isSuccess, router]);
+
     return (
         <Box
             py={2}
@@ -32,9 +58,10 @@ const Login = () => {
                 enableReinitialize
                 initialValues={{ email: '', password: '' }}
                 validationSchema={validationSchema}
-                onSubmit={async (values, { setSubmitting }) => {
-                    console.log(values);
+                onSubmit={async (values, { setSubmitting, resetForm }) => {
+                    await userLogin(values);
                     setSubmitting(false);
+                    resetForm();
                 }}
             >
                 {({
@@ -91,7 +118,7 @@ const Login = () => {
                                     fullWidth
                                     type="submit"
                                     size="large"
-                                    disabled={isSubmitting}
+                                    disabled={isSubmitting || isLoading}
                                 >
                                     Login
                                 </Button>
