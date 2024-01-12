@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import baseApi from '../features/api';
+import authSliceReducer from '../features/authSlice';
 
 const store = configureStore({
     reducer: {
         [baseApi.reducerPath]: baseApi.reducer,
+        auth: authSliceReducer,
     },
     devTools: process.env.NODE_ENV != 'production',
     middleware: (getDefaultMiddleware) =>
