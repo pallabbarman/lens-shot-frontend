@@ -7,6 +7,7 @@ import {
     ListItemText,
 } from '@mui/material';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 
 interface MainLayoutMenuItemProps extends ListItemProps {
@@ -21,16 +22,29 @@ const MainLayoutMenuItem = ({
     children,
     ...props
 }: MainLayoutMenuItemProps) => {
+    const pathname = usePathname();
+    const isActive = pathname === href;
+
     return (
         <ListItem
             disablePadding
             component={Link}
             href={href}
-            sx={{ color: cssColor('stormgrey') }}
+            sx={{
+                color: cssColor(isActive ? 'richblack' : 'stormgrey'),
+                bgcolor: cssColor(isActive ? 'lightgrey' : 'white'),
+            }}
             {...props}
         >
             <ListItemButton>
-                <ListItemIcon sx={{ minWidth: 30 }}>{icon}</ListItemIcon>
+                <ListItemIcon
+                    sx={{
+                        minWidth: 30,
+                        color: cssColor(isActive ? 'richblack' : 'stormgrey'),
+                    }}
+                >
+                    {icon}
+                </ListItemIcon>
                 <ListItemText primary={children} />
             </ListItemButton>
         </ListItem>
