@@ -16,7 +16,7 @@ const blogApi = baseApi.injectEndpoints({
                 url: `/blogs/${data ? `search=${data}` : ''}`,
             }),
         }),
-        getBlog: build.query({
+        getBlog: build.query<IApiResponse<IBlog>, string>({
             query: (id) => ({
                 url: `/blogs/${id}`,
             }),

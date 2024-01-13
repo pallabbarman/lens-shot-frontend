@@ -18,7 +18,7 @@ const Banner = () => {
         >
             <Typography variant="h1">LensShot</Typography>
             <Typography
-                variant="text3"
+                variant="text2"
                 textAlign="right"
                 color="textSecondary"
                 width={{ xs: '26ch', md: '100%' }}
