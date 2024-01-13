@@ -27,7 +27,7 @@ const MessageCard = ({ img, children, ...props }: MessageCardProps) => {
                 flexDirection="column"
                 gap={3}
             >
-                <Typography variant="text3" color="textSecondary">
+                <Typography variant="text2" color="textSecondary">
                     {children || 'No data found! Please try again.'}
                 </Typography>
                 <Button LinkComponent={Link} href="/">
