@@ -18,7 +18,12 @@ const BlogItem = ({ img, title, label, children }: BlogItemProps) => {
                 width="100%"
                 height={{ xs: 300, sm: 500, md: 700 }}
             >
-                <Image src={img} alt={title} fill objectFit="cover" />
+                <Image
+                    src={img}
+                    alt={title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                />
             </Box>
             <Box mt={3} textAlign="justify">
                 <SectionTitle label={label} textAlign="start">
