@@ -18,11 +18,18 @@ const Team = () => {
                                 overflow: 'hidden',
                             }}
                         >
-                            <Image
+                            <Box
+                                component={Image}
                                 src={`/${team.img}`}
                                 alt={team.name}
                                 fill
-                                style={{ objectFit: 'cover' }}
+                                sx={{
+                                    objectFit: 'cover',
+                                    '&:hover': {
+                                        transition: 'all 1s ease',
+                                        transform: 'scale(1.09, 1.09)',
+                                    },
+                                }}
                             />
                             <Box
                                 p="16px 32px"
