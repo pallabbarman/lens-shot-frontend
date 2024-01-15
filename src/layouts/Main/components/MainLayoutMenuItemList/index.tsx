@@ -9,6 +9,11 @@ import RegistrationIcon from '@/icons/RegistrationIcon';
 
 export const mainLayoutMenuItemList = [
     {
+        href: '/',
+        icon: <HomeIcon />,
+        title: 'Home',
+    },
+    {
         href: '/login',
         icon: <LoginIcon />,
         title: 'Login',
@@ -17,11 +22,6 @@ export const mainLayoutMenuItemList = [
         href: '/register',
         icon: <RegistrationIcon />,
         title: 'Registration',
-    },
-    {
-        href: '/',
-        icon: <HomeIcon />,
-        title: 'Home',
     },
     {
         href: '/services',
