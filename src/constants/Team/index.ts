@@ -1,4 +1,6 @@
-export const teamData = [
+import { ITeam } from '@/types/team';
+
+export const teamData: ITeam[] = [
     {
         name: 'Olivia Rodrigo',
         img: 'person1.jpg',

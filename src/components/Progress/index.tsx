@@ -1,11 +1,13 @@
 import { Box, CircularProgress, CircularProgressProps } from '@mui/material';
 
-type ProgressProps = CircularProgressProps;
+interface ProgressProps extends CircularProgressProps {
+    fullHeight?: boolean;
+}
 
-const Progress = ({ ...props }: ProgressProps) => {
+const Progress = ({ fullHeight = true, ...props }: ProgressProps) => {
     return (
         <Box
-            height="100vh"
+            height={fullHeight ? '100vh' : 0}
             display="flex"
             alignItems="center"
             justifyContent="center"
