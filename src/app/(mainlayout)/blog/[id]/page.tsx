@@ -21,7 +21,7 @@ const Blog = ({ params }: BlogProps) => {
         content = <Progress />;
     } else if (isError && error) {
         toast.error('Something went wrong! Please try again!');
-        content = <MessageCard />;
+        content = <MessageCard fullHeight />;
     } else if (isSuccess && data?.data) {
         content = (
             <BlogItem

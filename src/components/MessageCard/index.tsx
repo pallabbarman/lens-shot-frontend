@@ -6,12 +6,18 @@ import Link from 'next/link';
 interface MessageCardProps extends BoxProps {
     img?: string | StaticImageData;
     children?: string;
+    fullHeight?: boolean;
 }
 
-const MessageCard = ({ img, children, ...props }: MessageCardProps) => {
+const MessageCard = ({
+    img,
+    children,
+    fullHeight = false,
+    ...props
+}: MessageCardProps) => {
     return (
         <Box
-            height="100vh"
+            height={fullHeight ? '100vh' : 'auto'}
             display="flex"
             alignItems="center"
             justifyContent="center"

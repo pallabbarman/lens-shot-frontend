@@ -3,7 +3,7 @@ import MessageCard from '@/components/MessageCard';
 
 const NotFoundPage = () => {
     return (
-        <MessageCard img={notFound}>
+        <MessageCard img={notFound} fullHeight>
             Sorry, the page you visited does not exist.
         </MessageCard>
     );

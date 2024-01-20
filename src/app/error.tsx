@@ -5,7 +5,7 @@ import MessageCard from '@/components/MessageCard';
 
 const ErrorPage = () => {
     return (
-        <MessageCard img={error}>
+        <MessageCard img={error} fullHeight>
             Sorry, something went wrong. Please try again!
         </MessageCard>
     );
