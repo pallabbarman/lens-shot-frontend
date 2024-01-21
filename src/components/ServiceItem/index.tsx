@@ -27,7 +27,6 @@ const ServiceItem = ({ img, children, ...props }: ServiceItemProps) => {
             onMouseLeave={() => setHovered(false)}
             sx={{
                 width: '100%',
-                minWidth: 250,
                 height: '100%',
                 minHeight: 380,
                 position: 'relative',
