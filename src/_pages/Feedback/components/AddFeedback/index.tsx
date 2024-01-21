@@ -1,9 +1,14 @@
 'use client';
 
 import DialogConfirm, { DialogConfirmProps } from '@/components/DialogConfirm';
+import { useAddFeedbackMutation } from '@/redux/features/feedbackApi';
+import { IGenericErrorResponse } from '@/types/error';
+import { DecodedTokenProps } from '@/utils/jwt';
+import { getUserId } from '@/utils/user';
 import { Grid, TextField } from '@mui/material';
 import { Formik } from 'formik';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 
 interface AddFeedbackProps extends DialogConfirmProps {
@@ -16,6 +21,26 @@ const validationSchema = Yup.object().shape({
 
 const AddFeedback = ({ open, onClose, ...props }: AddFeedbackProps) => {
     const formRef = useRef<HTMLInputElement>(null);
+    const user = getUserId() as DecodedTokenProps;
+    const [addFeedback, { data, isLoading, isSuccess, isError, error }] =
+        useAddFeedbackMutation();
+
+    useEffect(() => {
+        if (isSuccess && data?.message) {
+            toast.success(data.message);
+            onClose();
+        }
+        if (isError && error) {
+            toast.error('Something went wrong! Please try again!');
+            onClose();
+            if ('status' in error) {
+                const errorMessage = error.data as IGenericErrorResponse;
+                if (errorMessage) {
+                    toast.error(errorMessage?.message);
+                }
+            }
+        }
+    }, [data, error, isError, isSuccess, onClose]);
 
     return (
         <DialogConfirm
@@ -23,7 +48,6 @@ const AddFeedback = ({ open, onClose, ...props }: AddFeedbackProps) => {
             open={open}
             onConfirm={() => {
                 formRef.current?.click();
-                onClose();
             }}
             onClose={onClose}
             {...props}
@@ -33,7 +57,11 @@ const AddFeedback = ({ open, onClose, ...props }: AddFeedbackProps) => {
                 initialValues={{ feedback: '' }}
                 validationSchema={validationSchema}
                 onSubmit={async (values, { setSubmitting, resetForm }) => {
-                    console.log(values);
+                    const formValues = {
+                        ...values,
+                        userId: user.userId,
+                    };
+                    await addFeedback(formValues);
                     setSubmitting(false);
                     resetForm();
                 }}
@@ -73,7 +101,7 @@ const AddFeedback = ({ open, onClose, ...props }: AddFeedbackProps) => {
                                     helperText={
                                         touched.feedback && errors.feedback
                                     }
-                                    disabled={isSubmitting}
+                                    disabled={isSubmitting || isLoading}
                                 />
                             </Grid>
                         </Grid>

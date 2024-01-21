@@ -34,7 +34,7 @@ const Feedback = () => {
                         key={feedback.id}
                         name={`${feedback?.user?.firstName} ${feedback?.user?.lastName}`}
                         comment={feedback?.feedback}
-                        date={feedback.createdAt}
+                        date={feedback?.createdAt}
                     />
                 ))}
             </>

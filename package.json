@@ -25,6 +25,7 @@
         "@mui/material": "^5.14.16",
         "@reduxjs/toolkit": "^1.9.7",
         "formik": "^2.4.5",
+        "jwt-decode": "^4.0.0",
         "lodash": "^4.17.21",
         "next": "13.5.4",
         "react": "^18",

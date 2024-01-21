@@ -5,6 +5,6 @@ export interface IFeedback {
     feedback: string;
     userId: string;
     user?: IUser;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
 }

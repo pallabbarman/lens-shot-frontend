@@ -6,7 +6,7 @@ import Avatar from '../Avatar';
 interface AvatarInfoProps extends BoxProps {
     name: string;
     comment?: string;
-    date: Date;
+    date?: Date;
 }
 
 const AvatarInfo = ({ name, comment, date, ...props }: AvatarInfoProps) => {
@@ -30,9 +30,11 @@ const AvatarInfo = ({ name, comment, date, ...props }: AvatarInfoProps) => {
                     {comment}
                 </Typography>
             )}
-            <Typography ml={6} variant="text6">
-                {formatTimeAgo(date)}
-            </Typography>
+            {date && (
+                <Typography ml={6} variant="text6">
+                    {formatTimeAgo(date)}
+                </Typography>
+            )}
         </Box>
     );
 };
