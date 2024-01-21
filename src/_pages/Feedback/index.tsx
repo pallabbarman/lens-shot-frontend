@@ -6,12 +6,18 @@ import Progress from '@/components/Progress';
 import SectionTitle from '@/components/SectionTitle';
 import { useGetFeedbacksQuery } from '@/redux/features/feedbackApi';
 import { IFeedback } from '@/types/feedback';
-import { Box, Typography } from '@mui/material';
+import { Box, Button } from '@mui/material';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
+import AddFeedback from './components/AddFeedback';
 
 const Feedback = () => {
+    const [openDialog, setOpenDialog] = useState(false);
     const { data, isLoading, error, isError, isSuccess } =
         useGetFeedbacksQuery(undefined);
+
+    const handleOpen = () => setOpenDialog(true);
+    const handleClose = () => setOpenDialog(false);
 
     let content = null;
 
@@ -36,11 +42,14 @@ const Feedback = () => {
     }
 
     return (
-        <Box mt={{ xs: 3, sm: 5 }}>
-            <SectionTitle label="REVIEWS">Feedback</SectionTitle>
-            <Typography variant="text3">Leave Feedback</Typography>
-            {content}
-        </Box>
+        <>
+            <AddFeedback open={openDialog} onClose={handleClose} />
+            <Box mt={{ xs: 3, sm: 5 }}>
+                <SectionTitle label="REVIEWS">Feedback</SectionTitle>
+                <Button onClick={handleOpen}>Leave Feedback</Button>
+                {content}
+            </Box>
+        </>
     );
 };
 

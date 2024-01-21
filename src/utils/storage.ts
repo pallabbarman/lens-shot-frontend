@@ -1,5 +1,7 @@
+import { isBrowser } from './window';
+
 export const setToLocalStorage = (key: string, token: string) => {
-    if (!key || typeof window === 'undefined') {
+    if (!key || !isBrowser) {
         return '';
     }
 
@@ -7,7 +9,7 @@ export const setToLocalStorage = (key: string, token: string) => {
 };
 
 export const getFromLocalStorage = (key: string) => {
-    if (!key || typeof window === 'undefined') {
+    if (!key || !isBrowser) {
         return '';
     }
 
