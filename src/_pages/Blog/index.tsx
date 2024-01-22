@@ -1,41 +1,45 @@
 'use client';
 
-import BlogCard from '@/components/BlogCard';
-import CardSkeletonField from '@/components/CardSkeletonField';
+import BlogItem from '@/components/BlogItem';
 import MessageCard from '@/components/MessageCard';
-import SectionTitle from '@/components/SectionTitle';
-import { useGetBlogsQuery } from '@/redux/features/blogApi';
-import { Box, Grid } from '@mui/material';
+import Progress from '@/components/Progress';
+import { useGetBlogQuery } from '@/redux/features/blogApi';
+import { Box } from '@mui/material';
 import { toast } from 'react-toastify';
+import AddComment from './components/AddComment';
 
-const Blog = () => {
-    const { data, isLoading, isError, isSuccess, error } = useGetBlogsQuery('');
+interface BlogProps {
+    id: string;
+}
+
+const Blog = ({ id }: BlogProps) => {
+    const { data, isError, isLoading, isSuccess, error } = useGetBlogQuery(id);
 
     let content = null;
 
     if (isLoading) {
-        content = <CardSkeletonField />;
+        content = <Progress />;
     } else if (isError && error) {
         toast.error('Something went wrong! Please try again!');
-        content = <MessageCard />;
+        content = <MessageCard fullHeight />;
     } else if (isSuccess && data?.data) {
         content = (
-            <Grid container spacing={3}>
-                {data?.data?.map((blog) => (
-                    <Grid item md={4} sm={6} xs={12} key={blog.id}>
-                        <BlogCard blog={blog} />
-                    </Grid>
-                ))}
-            </Grid>
+            <>
+                <BlogItem
+                    img={data.data.img}
+                    title={data.data.title}
+                    label={data.data.category?.name}
+                >
+                    {data?.data?.content}
+                </BlogItem>
+                <Box>
+                    <AddComment blogId={id} />
+                </Box>
+            </>
         );
     }
 
-    return (
-        <Box mt={{ xs: 3, sm: 5 }}>
-            <SectionTitle label="READ">News & Blog</SectionTitle>
-            {content}
-        </Box>
-    );
+    return content;
 };
 
 export default Blog;

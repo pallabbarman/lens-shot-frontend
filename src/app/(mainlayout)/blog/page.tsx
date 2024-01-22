@@ -1,7 +1,7 @@
-import Blog from '@/_pages/Blog';
+import Blogs from '@/_pages/Blogs';
 
-const BlogPage = () => {
-    return <Blog />;
+const BlogsPage = () => {
+    return <Blogs />;
 };
 
-export default BlogPage;
+export default BlogsPage;
