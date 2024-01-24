@@ -7,6 +7,7 @@ import { useGetBlogQuery } from '@/redux/features/blogApi';
 import { Box } from '@mui/material';
 import { toast } from 'react-toastify';
 import AddComment from './components/AddComment';
+import BlogComments from './components/BlogComments';
 
 interface BlogProps {
     id: string;
@@ -33,6 +34,7 @@ const Blog = ({ id }: BlogProps) => {
                     {data?.data?.content}
                 </BlogItem>
                 <Box>
+                    <BlogComments blogId={id} />
                     <AddComment blogId={id} />
                 </Box>
             </>

@@ -1,11 +1,15 @@
 'use client';
 
 import SendIcon from '@/icons/SendIcon';
+import { useAddCommentMutation } from '@/redux/features/commentApi';
+import { IGenericErrorResponse } from '@/types/error';
 import { cssColor } from '@/utils/color';
 import { DecodedTokenProps } from '@/utils/jwt';
 import { getUserId } from '@/utils/user';
-import { Grid, InputAdornment, TextField } from '@mui/material';
+import { Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import { Formik } from 'formik';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 
 interface AddCommentProps {
@@ -18,6 +22,23 @@ const validationSchema = Yup.object().shape({
 
 const AddComment = ({ blogId }: AddCommentProps) => {
     const user = getUserId() as DecodedTokenProps;
+    const [addComment, { isError, isLoading, isSuccess, data, error }] =
+        useAddCommentMutation();
+
+    useEffect(() => {
+        if (isSuccess && data?.message) {
+            toast.success(data.message);
+        }
+        if (isError && error) {
+            toast.error('Something went wrong! Please try again!');
+            if ('status' in error) {
+                const errorMessage = error.data as IGenericErrorResponse;
+                if (errorMessage) {
+                    toast.error(errorMessage?.message);
+                }
+            }
+        }
+    }, [data, error, isError, isSuccess]);
 
     return (
         <Formik
@@ -31,6 +52,7 @@ const AddComment = ({ blogId }: AddCommentProps) => {
                     blogId,
                 };
                 console.log(formValues);
+                await addComment(formValues);
                 setSubmitting(false);
                 resetForm();
             }}
@@ -44,9 +66,15 @@ const AddComment = ({ blogId }: AddCommentProps) => {
                 handleSubmit,
                 isSubmitting,
                 dirty,
+                submitForm,
             }) => (
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={3}>
+                        <Grid item xs={12}>
+                            <Typography variant="text2">
+                                Leave a comment
+                            </Typography>
+                        </Grid>
                         <Grid item xs={12}>
                             <TextField
                                 fullWidth
@@ -72,6 +100,7 @@ const AddComment = ({ blogId }: AddCommentProps) => {
                                             disablePointerEvents={
                                                 !dirty || isSubmitting
                                             }
+                                            onClick={submitForm}
                                             sx={{
                                                 cursor: 'pointer',
                                                 color: cssColor(
