@@ -21,6 +21,12 @@ const commentApi = baseApi.injectEndpoints({
                 url: `/comments/${id}`,
             }),
         }),
+        deleteComment: build.mutation<IApiResponse<IComment>, string>({
+            query: (id) => ({
+                url: `/comments/${id}`,
+                method: 'DELETE',
+            }),
+        }),
     }),
 });
 
@@ -28,6 +34,7 @@ export const {
     useAddCommentMutation,
     useGetCommentsQuery,
     useGetCommentQuery,
+    useDeleteCommentMutation,
 } = commentApi;
 
 export default commentApi.reducer;
