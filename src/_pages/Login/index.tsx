@@ -34,12 +34,13 @@ const Login = () => {
             router.back();
         }
         if (isError && error) {
-            toast.error('Something went wrong! Please try again!');
             if ('status' in error) {
                 const errorMessage = error.data as IGenericErrorResponse;
                 if (errorMessage) {
                     toast.error(errorMessage?.message);
                 }
+            } else {
+                toast.error('Something went wrong! Please try again!');
             }
         }
     }, [data, error, isError, isSuccess, router]);

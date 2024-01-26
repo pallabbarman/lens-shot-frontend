@@ -20,6 +20,7 @@ const blogApi = baseApi.injectEndpoints({
             query: (id) => ({
                 url: `/blogs/${id}`,
             }),
+            providesTags: ['comments'],
         }),
     }),
 });

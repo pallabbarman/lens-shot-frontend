@@ -1,6 +1,6 @@
 'use client';
 
-import AvatarInfo from '@/components/AvatarInfo';
+import CommentInfo from '@/components/CommentInfo';
 import MessageCard from '@/components/MessageCard';
 import Progress from '@/components/Progress';
 import SectionTitle from '@/components/SectionTitle';
@@ -30,7 +30,7 @@ const Feedback = () => {
         content = (
             <>
                 {data?.data?.map((feedback: IFeedback) => (
-                    <AvatarInfo
+                    <CommentInfo
                         key={feedback.id}
                         name={`${feedback?.user?.firstName} ${feedback?.user?.lastName}`}
                         comment={feedback?.feedback}

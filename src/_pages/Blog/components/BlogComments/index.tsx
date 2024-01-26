@@ -1,20 +1,23 @@
 'use client';
 
-import AvatarInfo from '@/components/AvatarInfo';
+import CommentInfo from '@/components/CommentInfo';
 import Progress from '@/components/Progress';
 import { useGetBlogQuery } from '@/redux/features/blogApi';
 import { useDeleteCommentMutation } from '@/redux/features/commentApi';
 import { IComment } from '@/types/comment';
 import { IGenericErrorResponse } from '@/types/error';
 import Box from '@mui/material/Box';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import EditComment from '../EditComment';
 
 interface BlogCommentsProps {
     blogId: string;
 }
 
 const BlogComments = ({ blogId }: BlogCommentsProps) => {
+    const [openDialog, setOpenDialog] = useState(false);
+
     const { data, isLoading, error, isError, isSuccess } =
         useGetBlogQuery(blogId);
     const [
@@ -27,6 +30,9 @@ const BlogComments = ({ blogId }: BlogCommentsProps) => {
             error: deleteError,
         },
     ] = useDeleteCommentMutation();
+
+    const handleOpen = () => setOpenDialog(true);
+    const handleClose = () => setOpenDialog(false);
 
     useEffect(() => {
         if (isDeleteSuccess && deleteData?.message) {
@@ -58,15 +64,24 @@ const BlogComments = ({ blogId }: BlogCommentsProps) => {
         content = (
             <Box mb={3}>
                 {data?.data?.comments?.map((comment: IComment) => (
-                    <AvatarInfo
-                        key={comment.id}
-                        isUpdate
-                        name={`${comment?.user?.firstName} ${comment?.user?.lastName}`}
-                        comment={comment.comment}
-                        date={comment.createdAt}
-                        disabled={isDeleteLoading}
-                        onDelete={() => handleDelete(comment.id as string)}
-                    />
+                    <>
+                        <CommentInfo
+                            key={comment.id}
+                            isUpdate
+                            name={`${comment?.user?.firstName} ${comment?.user?.lastName}`}
+                            comment={comment.comment}
+                            date={comment.createdAt}
+                            disabled={isDeleteLoading}
+                            onEdit={handleOpen}
+                            onDelete={() => handleDelete(comment.id as string)}
+                        />
+                        <EditComment
+                            open={openDialog}
+                            key={comment.id}
+                            comment={comment}
+                            onClose={handleClose}
+                        />
+                    </>
                 ))}
             </Box>
         );

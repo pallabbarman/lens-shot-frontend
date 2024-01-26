@@ -30,12 +30,13 @@ const AddComment = ({ blogId }: AddCommentProps) => {
             toast.success(data.message);
         }
         if (isError && error) {
-            toast.error('Something went wrong! Please try again!');
             if ('status' in error) {
                 const errorMessage = error.data as IGenericErrorResponse;
                 if (errorMessage) {
                     toast.error(errorMessage?.message);
                 }
+            } else {
+                toast.error('Something went wrong! Please try again!');
             }
         }
     }, [data, error, isError, isSuccess]);
@@ -48,10 +49,9 @@ const AddComment = ({ blogId }: AddCommentProps) => {
             onSubmit={async (values, { setSubmitting, resetForm }) => {
                 const formValues = {
                     ...values,
-                    userId: user.userId,
+                    userId: user?.userId,
                     blogId,
                 };
-                console.log(formValues);
                 await addComment(formValues);
                 setSubmitting(false);
                 resetForm();
@@ -98,7 +98,9 @@ const AddComment = ({ blogId }: AddCommentProps) => {
                                         <InputAdornment
                                             position="end"
                                             disablePointerEvents={
-                                                !dirty || isSubmitting
+                                                !dirty ||
+                                                isSubmitting ||
+                                                isLoading
                                             }
                                             onClick={submitForm}
                                             sx={{

@@ -10,6 +10,7 @@ const commentApi = baseApi.injectEndpoints({
                 method: 'POST',
                 body: data,
             }),
+            invalidatesTags: ['comments'],
         }),
         getComments: build.query<IApiResponse<IComment[]>, undefined>({
             query: () => ({
@@ -21,11 +22,23 @@ const commentApi = baseApi.injectEndpoints({
                 url: `/comments/${id}`,
             }),
         }),
+        editComment: build.mutation<
+            IApiResponse<IComment>,
+            { id: string; data: Partial<IComment> }
+        >({
+            query: ({ id, data }) => ({
+                url: `/comments/${id}`,
+                method: 'PATCH',
+                body: data,
+            }),
+            invalidatesTags: ['comments'],
+        }),
         deleteComment: build.mutation<IApiResponse<IComment>, string>({
             query: (id) => ({
                 url: `/comments/${id}`,
                 method: 'DELETE',
             }),
+            invalidatesTags: ['comments'],
         }),
     }),
 });
@@ -34,6 +47,7 @@ export const {
     useAddCommentMutation,
     useGetCommentsQuery,
     useGetCommentQuery,
+    useEditCommentMutation,
     useDeleteCommentMutation,
 } = commentApi;
 
