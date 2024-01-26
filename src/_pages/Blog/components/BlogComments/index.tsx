@@ -39,12 +39,13 @@ const BlogComments = ({ blogId }: BlogCommentsProps) => {
             toast.success(deleteData.message);
         }
         if (isDeleteError && deleteError) {
-            toast.error('Something went wrong! Please try again!');
             if ('status' in deleteError) {
                 const errorMessage = deleteError.data as IGenericErrorResponse;
                 if (errorMessage) {
                     toast.error(errorMessage?.message);
                 }
+            } else {
+                toast.error('Something went wrong! Please try again!');
             }
         }
     }, [deleteData, deleteError, isDeleteError, isDeleteSuccess]);

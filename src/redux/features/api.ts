@@ -17,7 +17,7 @@ const baseApi = createApi({
         },
     }),
     endpoints: () => ({}),
-    tagTypes: ['comments'],
+    tagTypes: ['comments', 'feedback'],
 });
 
 export default baseApi;

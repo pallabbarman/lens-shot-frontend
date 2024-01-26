@@ -1,29 +1,25 @@
-'use client';
-
 import DialogConfirm, { DialogConfirmProps } from '@/components/DialogConfirm';
-import { useAddFeedbackMutation } from '@/redux/features/feedbackApi';
+import { useEditFeedbackMutation } from '@/redux/features/feedbackApi';
 import { IGenericErrorResponse } from '@/types/error';
+import { IFeedback } from '@/types/feedback';
 import { DecodedTokenProps } from '@/utils/jwt';
 import { getUserId } from '@/utils/user';
 import { Grid, TextField } from '@mui/material';
 import { Formik } from 'formik';
 import { useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
-import * as Yup from 'yup';
 
-interface AddFeedbackProps extends DialogConfirmProps {
+interface EditFeedbackProps extends DialogConfirmProps {
+    feedback: IFeedback;
     onClose: VoidFunction;
 }
 
-const validationSchema = Yup.object().shape({
-    feedback: Yup.string().required('Feedback is required'),
-});
-
-const AddFeedback = ({ open, onClose, ...props }: AddFeedbackProps) => {
+const EditFeedback = ({ feedback, onClose, ...props }: EditFeedbackProps) => {
     const formRef = useRef<HTMLInputElement>(null);
     const user = getUserId() as DecodedTokenProps;
-    const [addFeedback, { data, isLoading, isSuccess, isError, error }] =
-        useAddFeedbackMutation();
+
+    const [editFeedback, { isError, isLoading, isSuccess, data, error }] =
+        useEditFeedbackMutation();
 
     useEffect(() => {
         if (isSuccess && data?.message) {
@@ -43,25 +39,26 @@ const AddFeedback = ({ open, onClose, ...props }: AddFeedbackProps) => {
 
     return (
         <DialogConfirm
-            title="Leave Feedback"
-            open={open}
+            title="Edit You Feedback"
             onConfirm={() => {
                 formRef.current?.click();
             }}
-            onClose={onClose}
             disabled={isLoading}
+            onClose={onClose}
             {...props}
         >
             <Formik
                 enableReinitialize
-                initialValues={{ feedback: '' }}
-                validationSchema={validationSchema}
+                initialValues={{ feedback: feedback.feedback }}
                 onSubmit={async (values, { setSubmitting, resetForm }) => {
                     const formValues = {
                         ...values,
                         userId: user.userId,
                     };
-                    await addFeedback(formValues);
+                    await editFeedback({
+                        id: feedback.id as string,
+                        data: formValues,
+                    });
                     setSubmitting(false);
                     onClose();
                     resetForm();
@@ -113,4 +110,4 @@ const AddFeedback = ({ open, onClose, ...props }: AddFeedbackProps) => {
     );
 };
 
-export default AddFeedback;
+export default EditFeedback;
