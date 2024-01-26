@@ -7,7 +7,7 @@ import { useDeleteCommentMutation } from '@/redux/features/commentApi';
 import { IComment } from '@/types/comment';
 import { IGenericErrorResponse } from '@/types/error';
 import Box from '@mui/material/Box';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import EditComment from '../EditComment';
 
@@ -64,9 +64,8 @@ const BlogComments = ({ blogId }: BlogCommentsProps) => {
         content = (
             <Box mb={3}>
                 {data?.data?.comments?.map((comment: IComment) => (
-                    <>
+                    <Fragment key={comment.id}>
                         <CommentInfo
-                            key={comment.id}
                             isUpdate
                             name={`${comment?.user?.firstName} ${comment?.user?.lastName}`}
                             comment={comment.comment}
@@ -77,11 +76,10 @@ const BlogComments = ({ blogId }: BlogCommentsProps) => {
                         />
                         <EditComment
                             open={openDialog}
-                            key={comment.id}
                             comment={comment}
                             onClose={handleClose}
                         />
-                    </>
+                    </Fragment>
                 ))}
             </Box>
         );

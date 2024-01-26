@@ -19,6 +19,8 @@ const Feedback = () => {
     const handleOpen = () => setOpenDialog(true);
     const handleClose = () => setOpenDialog(false);
 
+    console.log(openDialog);
+
     let content = null;
 
     if (isLoading) {

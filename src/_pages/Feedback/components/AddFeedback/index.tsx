@@ -28,19 +28,18 @@ const AddFeedback = ({ open, onClose, ...props }: AddFeedbackProps) => {
     useEffect(() => {
         if (isSuccess && data?.message) {
             toast.success(data.message);
-            onClose();
         }
         if (isError && error) {
-            toast.error('Something went wrong! Please try again!');
-            onClose();
             if ('status' in error) {
                 const errorMessage = error.data as IGenericErrorResponse;
                 if (errorMessage) {
                     toast.error(errorMessage?.message);
                 }
+            } else {
+                toast.error('Something went wrong! Please try again!');
             }
         }
-    }, [data, error, isError, isSuccess, onClose]);
+    }, [data, error, isError, isSuccess]);
 
     return (
         <DialogConfirm
@@ -50,6 +49,7 @@ const AddFeedback = ({ open, onClose, ...props }: AddFeedbackProps) => {
                 formRef.current?.click();
             }}
             onClose={onClose}
+            disabled={isLoading}
             {...props}
         >
             <Formik
@@ -63,6 +63,7 @@ const AddFeedback = ({ open, onClose, ...props }: AddFeedbackProps) => {
                     };
                     await addFeedback(formValues);
                     setSubmitting(false);
+                    onClose();
                     resetForm();
                 }}
             >

@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 
 interface EditCommentProps extends DialogConfirmProps {
     comment: IComment;
-    onClose?: VoidFunction;
+    onClose: VoidFunction;
 }
 
 const EditComment = ({ comment, onClose, ...props }: EditCommentProps) => {
@@ -45,6 +45,7 @@ const EditComment = ({ comment, onClose, ...props }: EditCommentProps) => {
             onConfirm={() => {
                 formRef.current?.click();
             }}
+            disabled={isLoading}
             onClose={onClose}
             {...props}
         >
@@ -61,6 +62,7 @@ const EditComment = ({ comment, onClose, ...props }: EditCommentProps) => {
                         data: formValues,
                     });
                     setSubmitting(false);
+                    onClose();
                     resetForm();
                 }}
             >
