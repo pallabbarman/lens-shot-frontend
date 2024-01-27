@@ -1,5 +1,5 @@
 export enum Price_PLAN {
-    Standard = 300,
-    Premium = 450,
-    Platinum = 750,
+    StANDARD = 300,
+    PREMIUM = 450,
+    PLATINUM = 750,
 }

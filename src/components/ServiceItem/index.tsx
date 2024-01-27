@@ -1,6 +1,7 @@
 'use client';
 
 import ArrowRightIcon from '@/icons/ArrowRightIcon';
+import { IService } from '@/types/services';
 import { cssColor } from '@/utils/color';
 import {
     Box,
@@ -9,16 +10,15 @@ import {
     Slide,
     Typography,
 } from '@mui/material';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
 interface ServiceItemProps extends BoxProps {
-    img: string | StaticImageData;
-    children: string;
+    service: IService;
 }
 
-const ServiceItem = ({ img, children, ...props }: ServiceItemProps) => {
+const ServiceItem = ({ service, ...props }: ServiceItemProps) => {
     const [hovered, setHovered] = useState(false);
 
     return (
@@ -38,8 +38,8 @@ const ServiceItem = ({ img, children, ...props }: ServiceItemProps) => {
             {...props}
         >
             <Image
-                src={img}
-                alt={children}
+                src={service.photo}
+                alt={service.title}
                 fill
                 style={{
                     transition: 'transform 0.5s ease',
@@ -51,7 +51,7 @@ const ServiceItem = ({ img, children, ...props }: ServiceItemProps) => {
             />
             <MuiLink
                 component={Link}
-                href="/"
+                href={`/services/${service.id}`}
                 sx={{ color: cssColor('richblack') }}
             >
                 <Box
@@ -72,7 +72,7 @@ const ServiceItem = ({ img, children, ...props }: ServiceItemProps) => {
                         fontWeight={400}
                         component="div"
                     >
-                        {children}
+                        {service.title}
                     </Typography>
                     <Box
                         sx={{

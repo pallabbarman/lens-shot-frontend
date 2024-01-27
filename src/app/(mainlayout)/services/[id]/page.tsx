@@ -20,7 +20,7 @@ const Service = () => {
                     autem inventore rem nihil? Quibusdam quo deserunt officiis
                     suscipit. Ratione quae, id architecto at, hic numquam eos
                     laudantium, iure saepe consequuntur similique quod et
-                    repudiandae reprehenderit!
+                    repudiandae reprehenderit! 01721933163
                 </Typography>
             </Box>
             <Fancybox
