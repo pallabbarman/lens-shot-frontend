@@ -5,7 +5,7 @@ export interface IService {
     id?: string;
     title: string;
     description: string;
-    photo: string;
+    photo: string[];
     price: Price_PLAN;
     categoryId: string;
     createdAt?: Date;

@@ -6,6 +6,7 @@ import SectionTitle from '@/components/SectionTitle';
 import ServiceItem from '@/components/ServiceItem';
 import { useGetServicesQuery } from '@/redux/features/serviceApi';
 import { Box, Grid } from '@mui/material';
+import { shuffle, slice } from 'lodash';
 import { toast } from 'react-toastify';
 
 const Services = () => {
@@ -20,10 +21,11 @@ const Services = () => {
         toast.error('Something went wrong! Please try again!');
         content = null;
     } else if (isSuccess && data?.data) {
+        const serviceData = slice(shuffle(data.data), 0, 6);
         content = (
             <Grid container spacing={3}>
-                {data.data?.map((service) => (
-                    <Grid item md={4} sm={6} xs={12} key={service.id}>
+                {serviceData?.map((service) => (
+                    <Grid item md={3} sm={6} xs={12} key={service.id}>
                         <ServiceItem service={service} />
                     </Grid>
                 ))}

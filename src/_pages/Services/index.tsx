@@ -6,6 +6,7 @@ import SectionTitle from '@/components/SectionTitle';
 import ServiceItem from '@/components/ServiceItem';
 import { useGetServicesQuery } from '@/redux/features/serviceApi';
 import { Box, Grid } from '@mui/material';
+import size from 'lodash/size';
 import { toast } from 'react-toastify';
 
 const Services = () => {
@@ -19,7 +20,9 @@ const Services = () => {
     } else if (isError && error) {
         toast.error('Something went wrong! Please try again!');
         content = <MessageCard />;
-    } else if (isSuccess && data?.data) {
+    } else if (isSuccess && size(data?.data) === 0) {
+        content = <MessageCard />;
+    } else if (isSuccess && size(data?.data) > 0) {
         content = (
             <Grid container spacing={3}>
                 {data.data?.map((service) => (
