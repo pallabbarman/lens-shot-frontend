@@ -11,27 +11,24 @@ const VideoGallery = () => {
             <Grid container spacing={3}>
                 <Grid item sm={4} xs={12}>
                     <PhotoGallery
-                        img={abc}
+                        src={abc}
                         alt="hi"
-                        width="100%"
                         height={230}
                         data-fancybox="gallery"
                     />
                 </Grid>
                 <Grid item sm={4} xs={12}>
                     <PhotoGallery
-                        img={abc}
+                        src={abc}
                         alt="hi"
-                        width="100%"
                         height={230}
                         data-fancybox="gallery"
                     />
                 </Grid>
                 <Grid item sm={4} xs={12}>
                     <PhotoGallery
-                        img={abc}
+                        src={abc}
                         alt="hi"
-                        width="100%"
                         height={230}
                         data-fancybox="gallery"
                     />

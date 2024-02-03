@@ -1,22 +1,26 @@
-import { Box, BoxProps } from '@mui/material';
-import Image, { StaticImageData } from 'next/image';
+import { blurDataURL } from '@/constants/Image';
+import Image, { ImageProps, StaticImageData } from 'next/image';
 
-interface PhotoGalleryProps extends BoxProps {
-    img: string | StaticImageData;
+interface PhotoGalleryProps extends ImageProps {
+    src: string | StaticImageData;
     alt: string;
 }
 
-const PhotoGallery = ({ img, alt, ...props }: PhotoGalleryProps) => {
+const PhotoGallery = ({ src, alt, ...props }: PhotoGalleryProps) => {
     return (
-        <Box
-            component={Image}
-            src={img}
+        <Image
+            {...props}
+            src={src}
             alt={alt}
-            sx={{
+            width={0}
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL={blurDataURL}
+            style={{
+                width: '100%',
                 cursor: 'pointer',
                 objectFit: 'cover',
             }}
-            {...props}
         />
     );
 };
