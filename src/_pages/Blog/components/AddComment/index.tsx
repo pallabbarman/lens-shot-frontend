@@ -137,7 +137,7 @@ const AddComment = ({ blogId }: AddCommentProps) => {
                     color="textPrimary"
                     sx={{ textDecoration: 'none' }}
                 >
-                    To leave comments, please login here
+                    To leave comments, please login
                 </Typography>
             )}
         </>

@@ -53,6 +53,7 @@ const Service = ({ id }: ServiceProps) => {
                                     style={{
                                         width: '100%',
                                         objectFit: 'cover',
+                                        cursor: 'pointer',
                                     }}
                                     data-fancybox="gallery"
                                     placeholder="blur"

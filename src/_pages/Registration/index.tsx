@@ -1,10 +1,15 @@
 'use client';
 
 import SectionTitle from '@/components/SectionTitle';
+import { useUserRegistrationMutation } from '@/redux/features/authApi';
+import { IGenericErrorResponse } from '@/types/error';
 import { cssColor } from '@/utils/color';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { Formik } from 'formik';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
@@ -29,6 +34,28 @@ const initialValues = {
 };
 
 const Registration = () => {
+    const router = useRouter();
+
+    const [userRegistration, { data, isLoading, isSuccess, isError, error }] =
+        useUserRegistrationMutation();
+
+    useEffect(() => {
+        if (isSuccess && data?.message) {
+            toast.success(data.message);
+            router.push('/login');
+        }
+        if (isError && error) {
+            if ('status' in error) {
+                const errorMessage = error.data as IGenericErrorResponse;
+                if (errorMessage) {
+                    toast.error(errorMessage?.message);
+                }
+            } else {
+                toast.error('Something went wrong! Please try again!');
+            }
+        }
+    }, [data, error, isError, isSuccess, router]);
+
     return (
         <Box
             py={2}
@@ -43,9 +70,10 @@ const Registration = () => {
                 enableReinitialize
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={(values, { setSubmitting }) => {
-                    console.log(values);
+                onSubmit={async (values, { setSubmitting, resetForm }) => {
+                    await userRegistration(values);
                     setSubmitting(false);
+                    resetForm();
                 }}
             >
                 {({
@@ -170,7 +198,7 @@ const Registration = () => {
                                     fullWidth
                                     type="submit"
                                     size="large"
-                                    disabled={isSubmitting}
+                                    disabled={isSubmitting || isLoading}
                                 >
                                     Signup
                                 </Button>

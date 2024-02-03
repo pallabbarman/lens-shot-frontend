@@ -6,7 +6,7 @@ export interface IUser {
     password: string;
     role?: string;
     contactNo: string;
-    address?: any;
+    address?: string;
     createdAt?: string;
     updatedAt?: string;
 }

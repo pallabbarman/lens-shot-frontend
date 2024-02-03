@@ -1,10 +1,12 @@
+import { IApiResponse } from '@/types/response';
+import { IUser } from '@/types/user';
 import { setToLocalStorage } from '@/utils/storage';
 import baseApi from './api';
 import { userLoggedIn } from './authSlice';
 
 const authApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
-        userRegistration: build.mutation({
+        userRegistration: build.mutation<IApiResponse<IUser>, IUser>({
             query: (data) => ({
                 url: '/auth/signup',
                 method: 'POST',

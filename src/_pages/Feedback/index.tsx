@@ -4,13 +4,16 @@ import CommentInfo from '@/components/CommentInfo';
 import MessageCard from '@/components/MessageCard';
 import Progress from '@/components/Progress';
 import SectionTitle from '@/components/SectionTitle';
+import useAuth from '@/hooks/useAuth';
 import {
     useDeleteFeedbackMutation,
     useGetFeedbacksQuery,
 } from '@/redux/features/feedbackApi';
 import { IGenericErrorResponse } from '@/types/error';
 import { IFeedback } from '@/types/feedback';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
+import size from 'lodash/size';
+import Link from 'next/link';
 import { Fragment, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import AddFeedback from './components/AddFeedback';
@@ -19,6 +22,7 @@ import EditFeedback from './components/EditFeedback';
 const Feedback = () => {
     const [openDialog, setOpenDialog] = useState(false);
     const [openEditDialog, setOpenEditDialog] = useState(false);
+    const auth = useAuth();
     const { data, isLoading, error, isError, isSuccess } =
         useGetFeedbacksQuery(undefined);
     const [
@@ -62,7 +66,9 @@ const Feedback = () => {
     } else if (isError && error) {
         toast.error('Something went wrong! Please try again!');
         content = <MessageCard />;
-    } else if (isSuccess && data?.data) {
+    } else if (isSuccess && size(data?.data) === 0) {
+        content = <MessageCard />;
+    } else if (isSuccess && size(data?.data) > 0) {
         content = (
             <>
                 {data?.data?.map((feedback: IFeedback) => (
@@ -92,7 +98,19 @@ const Feedback = () => {
             <AddFeedback open={openDialog} onClose={handleClose} />
             <Box mt={{ xs: 3, sm: 5 }}>
                 <SectionTitle label="REVIEWS">Feedback</SectionTitle>
-                <Button onClick={handleOpen}>Leave Feedback</Button>
+                {auth ? (
+                    <Button onClick={handleOpen}>Leave Feedback</Button>
+                ) : (
+                    <Typography
+                        variant="text4"
+                        component={Link}
+                        href="/login"
+                        color="textPrimary"
+                        sx={{ textDecoration: 'none' }}
+                    >
+                        To leave feedbacks, please login
+                    </Typography>
+                )}
                 {content}
             </Box>
         </>

@@ -38,6 +38,8 @@ const Login = () => {
                 const errorMessage = error.data as IGenericErrorResponse;
                 if (errorMessage) {
                     toast.error(errorMessage?.message);
+                } else {
+                    toast.error('Something went wrong! Please try again!');
                 }
             } else {
                 toast.error('Something went wrong! Please try again!');
