@@ -2,7 +2,7 @@ import { getFromLocalStorage, removeFromLocalStorage } from '@/utils/storage';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    accessToken: getFromLocalStorage('auth') || null,
+    accessToken: getFromLocalStorage('auth') || '',
 };
 
 const authSlice = createSlice({
@@ -13,7 +13,7 @@ const authSlice = createSlice({
             state.accessToken = action.payload;
         },
         userLoggedOut: (state) => {
-            state.accessToken = null;
+            state.accessToken = '';
             removeFromLocalStorage('auth');
         },
     },
