@@ -4,21 +4,9 @@ import CollectionsIcon from '@/icons/CollectionsIcon';
 import FeedbackIcon from '@/icons/FeedbackIcon';
 import HomeIcon from '@/icons/HomeIcon';
 import InfoIcon from '@/icons/InfoIcon';
-import LoginIcon from '@/icons/LoginIcon';
 import NoteIcon from '@/icons/NoteIcon';
-import RegistrationIcon from '@/icons/RegistrationIcon';
 
 export const mainLayoutMenuItemList = [
-    {
-        href: '/login',
-        icon: <LoginIcon />,
-        title: 'Login',
-    },
-    {
-        href: '/register',
-        icon: <RegistrationIcon />,
-        title: 'Registration',
-    },
     {
         href: '/',
         icon: <HomeIcon />,

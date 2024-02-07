@@ -1,5 +1,21 @@
+'use client';
+
+import useAuth from '@/hooks/useAuth';
 import CancelIcon from '@/icons/CancelIcon';
-import { Box, Drawer, IconButton, List } from '@mui/material';
+import LoginIcon from '@/icons/LoginIcon';
+import RegistrationIcon from '@/icons/RegistrationIcon';
+import { userLoggedOut } from '@/redux/features/authSlice';
+import { useAppDispatch } from '@/redux/hooks';
+import {
+    Box,
+    Drawer,
+    IconButton,
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+} from '@mui/material';
 import MainLayoutMenuItem from '../MainLayoutMenuItem';
 import { mainLayoutMenuItemList } from '../MainLayoutMenuItemList';
 interface MainLayoutMenuProps {
@@ -8,6 +24,14 @@ interface MainLayoutMenuProps {
 }
 
 const MainLayoutMenu = ({ open, onClose }: MainLayoutMenuProps) => {
+    const auth = useAuth();
+    const dispatch = useAppDispatch();
+
+    const handleLogout = () => {
+        dispatch(userLoggedOut());
+        onClose();
+    };
+
     return (
         <Drawer
             anchor="right"
@@ -27,6 +51,37 @@ const MainLayoutMenu = ({ open, onClose }: MainLayoutMenuProps) => {
                 </IconButton>
             </Box>
             <List>
+                {auth ? (
+                    <ListItem disablePadding onClick={handleLogout}>
+                        <ListItemButton>
+                            <ListItemIcon
+                                sx={{
+                                    minWidth: 30,
+                                }}
+                            >
+                                <LoginIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Logout" />
+                        </ListItemButton>
+                    </ListItem>
+                ) : (
+                    <>
+                        <MainLayoutMenuItem
+                            href="/login"
+                            icon={<LoginIcon />}
+                            onClose={onClose}
+                        >
+                            Login
+                        </MainLayoutMenuItem>
+                        <MainLayoutMenuItem
+                            href="/register"
+                            icon={<RegistrationIcon />}
+                            onClose={onClose}
+                        >
+                            Registration
+                        </MainLayoutMenuItem>
+                    </>
+                )}
                 {mainLayoutMenuItemList.map((item) => (
                     <MainLayoutMenuItem
                         key={item.href}

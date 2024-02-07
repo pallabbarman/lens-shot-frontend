@@ -1,8 +1,8 @@
-import { getFromLocalStorage } from '@/utils/storage';
+import { getFromLocalStorage, removeFromLocalStorage } from '@/utils/storage';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    accessToken: getFromLocalStorage('auth') || '',
+    accessToken: getFromLocalStorage('auth') || null,
 };
 
 const authSlice = createSlice({
@@ -13,7 +13,8 @@ const authSlice = createSlice({
             state.accessToken = action.payload;
         },
         userLoggedOut: (state) => {
-            state.accessToken = '';
+            state.accessToken = null;
+            removeFromLocalStorage('auth');
         },
     },
 });
