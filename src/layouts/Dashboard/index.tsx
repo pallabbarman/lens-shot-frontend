@@ -1,7 +1,4 @@
-'use client';
-
-import AccountMenu from '@/components/AccountMenu';
-import MenuIcon from '@/icons/MenuIcon';
+import Avatar from '@/components/Avatar';
 import { cssColor } from '@/utils/color';
 import {
     AppBar,
@@ -9,23 +6,17 @@ import {
     Container,
     IconButton,
     Toolbar,
+    Tooltip,
     Typography,
 } from '@mui/material';
 import Link from 'next/link';
-import { useState } from 'react';
-import MainLayoutMenu from '../MainLayoutMenu';
+import { ReactNode } from 'react';
 
-const MainLayoutNavbar = () => {
-    const [openMenu, setOpenMenu] = useState(false);
+interface DashboardLayoutProps {
+    children: ReactNode;
+}
 
-    const handleOpenMenu = () => {
-        setOpenMenu(true);
-    };
-
-    const handleCloseMenu = () => {
-        setOpenMenu(false);
-    };
-
+const DashboardLayout = ({ children }: DashboardLayoutProps) => {
     return (
         <>
             <AppBar
@@ -48,21 +39,25 @@ const MainLayoutNavbar = () => {
                                 LensShot
                             </Typography>
                         </Box>
-                        <AccountMenu title="Profile" name="Pallab barman" />
-                        <IconButton
-                            size="large"
-                            color="inherit"
-                            aria-label="menu"
-                            onClick={handleOpenMenu}
-                        >
-                            <MenuIcon />
-                        </IconButton>
+                        <Tooltip title="Account settings">
+                            <IconButton
+                                size="small"
+                                sx={{ ml: 2 }}
+                                // aria-controls={
+                                //     open ? 'account-menu' : undefined
+                                // }
+                                aria-haspopup="true"
+                                // aria-expanded={open ? 'true' : undefined}
+                            >
+                                <Avatar name="Pallab Barman" />
+                            </IconButton>
+                        </Tooltip>
                     </Toolbar>
                 </Container>
             </AppBar>
-            <MainLayoutMenu open={openMenu} onClose={handleCloseMenu} />
+            {children}
         </>
     );
 };
 
-export default MainLayoutNavbar;
+export default DashboardLayout;

@@ -6,6 +6,7 @@ import MessageCard from '@/components/MessageCard';
 import SectionTitle from '@/components/SectionTitle';
 import { useGetBlogsQuery } from '@/redux/features/blogApi';
 import { Box, Grid } from '@mui/material';
+import size from 'lodash/size';
 import { toast } from 'react-toastify';
 
 const Blogs = () => {
@@ -18,7 +19,9 @@ const Blogs = () => {
     } else if (isError && error) {
         toast.error('Something went wrong! Please try again!');
         content = <MessageCard />;
-    } else if (isSuccess && data?.data) {
+    } else if (isSuccess && size(data?.data) === 0) {
+        content = <MessageCard />;
+    } else if (isSuccess && size(data?.data) > 0) {
         content = (
             <Grid container spacing={3}>
                 {data?.data?.map((blog) => (

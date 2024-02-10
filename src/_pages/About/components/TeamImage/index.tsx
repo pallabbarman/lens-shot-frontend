@@ -3,11 +3,11 @@ import { ITeam } from '@/types/team';
 import Box from '@mui/material/Box';
 import Image from 'next/image';
 
-interface TeamImage {
+interface TeamImageProps {
     team: ITeam;
 }
 
-const TeamImage = ({ team }: TeamImage) => {
+const TeamImage = ({ team }: TeamImageProps) => {
     return (
         <Box
             component={Image}
