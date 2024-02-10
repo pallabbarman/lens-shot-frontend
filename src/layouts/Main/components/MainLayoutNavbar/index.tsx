@@ -1,7 +1,10 @@
 'use client';
 
 import AccountMenu from '@/components/AccountMenu';
+import SkeletonField from '@/components/SkeletonField';
+import useAuth from '@/hooks/useAuth';
 import MenuIcon from '@/icons/MenuIcon';
+import { useGetProfileQuery } from '@/redux/features/profile';
 import { cssColor } from '@/utils/color';
 import {
     AppBar,
@@ -17,6 +20,8 @@ import MainLayoutMenu from '../MainLayoutMenu';
 
 const MainLayoutNavbar = () => {
     const [openMenu, setOpenMenu] = useState(false);
+    const auth = useAuth();
+    const { data, isSuccess, isLoading } = useGetProfileQuery(undefined);
 
     const handleOpenMenu = () => {
         setOpenMenu(true);
@@ -48,7 +53,21 @@ const MainLayoutNavbar = () => {
                                 LensShot
                             </Typography>
                         </Box>
-                        <AccountMenu title="Profile" name="Pallab barman" />
+                        {isLoading ? (
+                            <SkeletonField
+                                variant="circular"
+                                width={40}
+                                height={40}
+                            />
+                        ) : (
+                            auth &&
+                            isSuccess &&
+                            data.data && (
+                                <AccountMenu
+                                    name={`${data.data.firstName} ${data.data.lastName}`}
+                                />
+                            )
+                        )}
                         <IconButton
                             size="large"
                             color="inherit"

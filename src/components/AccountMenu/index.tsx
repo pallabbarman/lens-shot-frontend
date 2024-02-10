@@ -1,24 +1,18 @@
 import AccountIcon from '@/icons/AccountIcon';
+import HomeIcon from '@/icons/HomeIcon';
 import LogoutIcon from '@/icons/LogoutIcon';
 import { userLoggedOut } from '@/redux/features/authSlice';
 import { useAppDispatch } from '@/redux/hooks';
-import {
-    IconButton,
-    ListItemIcon,
-    Menu,
-    MenuItem,
-    Tooltip,
-} from '@mui/material';
+import { IconButton, ListItemIcon, Menu, MenuItem } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import { MouseEvent, ReactNode, useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import Avatar from '../Avatar';
 
 export interface AccountMenuProps {
-    title?: ReactNode;
     name: string;
 }
 
-const AccountMenu = ({ title, name }: AccountMenuProps) => {
+const AccountMenu = ({ name }: AccountMenuProps) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const dispatch = useAppDispatch();
     const router = useRouter();
@@ -38,6 +32,11 @@ const AccountMenu = ({ title, name }: AccountMenuProps) => {
         handleClose();
     };
 
+    const handleHome = () => {
+        router.push('/');
+        handleClose();
+    };
+
     const handleProfile = () => {
         router.push('/profile');
         handleClose();
@@ -45,11 +44,9 @@ const AccountMenu = ({ title, name }: AccountMenuProps) => {
 
     return (
         <>
-            <Tooltip title={title}>
-                <IconButton size="small" onClick={handleClick}>
-                    <Avatar name={name} />
-                </IconButton>
-            </Tooltip>
+            <IconButton onClick={handleClick}>
+                <Avatar name={name} />
+            </IconButton>
             <Menu
                 anchorEl={anchorEl}
                 open={open}
@@ -64,6 +61,12 @@ const AccountMenu = ({ title, name }: AccountMenuProps) => {
                     horizontal: 'right',
                 }}
             >
+                <MenuItem onClick={handleHome}>
+                    <ListItemIcon>
+                        <HomeIcon fontSize="small" />
+                    </ListItemIcon>
+                    Home
+                </MenuItem>
                 <MenuItem onClick={handleProfile}>
                     <ListItemIcon>
                         <AccountIcon fontSize="small" />
