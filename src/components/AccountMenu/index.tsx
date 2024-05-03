@@ -60,6 +60,11 @@ const AccountMenu = ({ name }: AccountMenuProps) => {
                     vertical: 'top',
                     horizontal: 'right',
                 }}
+                MenuListProps={{
+                    sx: {
+                        p: 1,
+                    },
+                }}
             >
                 <MenuItem onClick={handleHome}>
                     <ListItemIcon>

@@ -92,6 +92,7 @@ const AddFeedback = ({ open, onClose, ...props }: AddFeedbackProps) => {
                                     variant="outlined"
                                     placeholder="Your Feedback"
                                     multiline
+                                    minRows={4}
                                     maxRows={Infinity}
                                     onChange={handleChange}
                                     onBlur={handleBlur}

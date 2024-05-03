@@ -89,6 +89,7 @@ const EditFeedback = ({ feedback, onClose, ...props }: EditFeedbackProps) => {
                                     variant="outlined"
                                     placeholder="Your Feedback"
                                     multiline
+                                    minRows={4}
                                     maxRows={Infinity}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
